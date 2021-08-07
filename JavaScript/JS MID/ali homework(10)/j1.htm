@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        confirm(`Pеализовать класс, описывающий окружность. В классе должны быть следующие компоненты:
+                ■ поле, хранящее радиус окружности;
+                ■ get-свойство, возвращающее радиус окружности;
+                ■ set-свойство, устанавливающее радиус окружности;
+                ■ get-свойство, возвращающее диаметр окружности;
+                ■ метод, вычисляющий площадь окружности;
+                ■ метод, вычисляющий длину окружности.
+                `);
+
+
+        class Circle {
+            constructor(radius) {
+                this._radius = radius;
+            }
+            area(){ return Math.PI * this.radius**2  }
+            length(){ return Math.PI * this.diameter}
+
+            set radius(val) {
+                this._radius = val
+            }
+
+            get radius() {
+                return this._radius
+            }
+            get diameter() {
+                return this._radius * 2
+            }
+        }
+
+        let circle = new Circle(10)
+        console.log(circle.area())
+        console.log(circle.length())
+    </script>
+</body>
+</html>

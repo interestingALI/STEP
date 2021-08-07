@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            color: blanchedalmond;
+            background-color: black;
+        }
+        div {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #4b4b4b;
+            padding: 50px;
+        }
+        p {
+            width: 28%;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <p onclick="select(this)">1. On the Origin of Species by Charles Darwin</p>
+        <p onclick="select(this)">2. The Republic by Plato</p>
+        <p onclick="select(this)">3. Don Quixote by Miguel de Cervantes</p>
+        <p onclick="select(this)">4. Das Kapital by Karl Marx</p>
+        <p onclick="select(this)">5. The Great Gatsby by F. Scott Fitzgerald</p>
+        <p onclick="select(this)">6. The Iliad by Homer</p>
+        <p onclick="select(this)">7. Alice's Adventures in Wonderland by Lewis Carroll</p>
+    </div>  
+
+    <script>
+
+        /* Создать html-страницу со списком книг. 
+        При щелчке на элемент, цвет текста должен меняться на оранжевый. При повторном щелчке на другую книгу, предыдущей 
+        необходимо возвращать прежний цвет. 
+        Если при клике мышкой была зажата клавиша Ctrl, то элемент 
+        добавляется/удаляется из выделенных. Если при клике мышкой 
+        была зажата клавиша Shift, то к выделению добавляются все 
+        элементы в промежутке от предыдущего кликнутого до текущего. */
+
+        let books = document.getElementsByTagName("p");
+        let from = "";
+        let to = "";
+        
+        function select(book) {
+
+            document.addEventListener("keydown", select); 
+            for (let i = 0; i < books.length; i++) {
+                if (event.ctrlKey && book.style) {
+                    if ( book.style.backgroundColor == "orange" ) {
+                        book.style.backgroundColor = "#4b4b4b";      // ctrl deSelect
+                        book.style.color = "blanchedalmond";        
+                    }
+                    else {
+                        book.style.backgroundColor = "orange";      // ctrl  select
+                        book.style.color = "black";                 
+                    }
+                }                                    ////////////////////////////////////
+
+                else if (event.shiftKey && book.style) {
+                    event.preventDefault();   // ?
+
+                    book == books[i]? to=i : "";
+                    for (index = from; index <= to; index++) {                 // shift select
+                        books[index].style.backgroundColor = "orange";       
+                        books[index].style.color = "black";
+                    }
+                }
+                                                    ////////////////////////////////////
+                else if (book.style) {
+                    book == books[i]? from=i : ""
+                    console.log("from = " + from)
+                    books[i].style.backgroundColor = "#4b4b4b";
+                    books[i].style.color = "blanchedalmond";        // normal click
+                    book.style.backgroundColor = "orange";          
+                    book.style.color = "black";
+                }    
+            }
+        }
+        
+
+
+
+        
+
+    </script>
+</body>
+</html>

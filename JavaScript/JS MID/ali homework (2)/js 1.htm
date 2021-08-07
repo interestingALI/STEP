@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        let num = prompt("Написать функцию возведения числа в степень. Число:");
+        let stepen = prompt("Степень:");
+        function pow(x, n) {
+            return (n == 1) ? x : (x * pow(x, n - 1));
+        }
+        alert(pow(num,stepen));
+
+    </script>
+</body>
+</html>

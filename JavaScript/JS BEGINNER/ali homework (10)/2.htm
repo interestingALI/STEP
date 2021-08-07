@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    <p>Наибольший общий делитель</p>
+    <input id="first" type="text">
+    <input id="second" type="text">
+    <button id="btn">OK</button>
+
+    <script>
+        let first = document.getElementById("first");
+        let second = document.getElementById("second");
+        let btn = document.getElementById("btn");
+        let max;
+        let min;
+        let arr = [];
+
+        btn.onclick = function() {
+            let kod = ""; 
+
+            if (first.value < second.value) {
+                max = first.value;
+                min = second.value;
+            }
+
+            else if (first.value > second.value) {
+                max = second.value;
+                min = first.value;
+            }
+
+            for (let i = 1; i <= min; i++) {
+                if (max%i == 0 && min%i == 0) {
+                    arr.push(i)
+                }
+            }
+            let highest = 0;
+            for( let i=0; i<=arr.length; i++ ){    
+                if( arr[i]>=highest ){
+                highest = arr[i]
+                }
+            }
+            alert(highest)
+        }
+
+    </script>
+
+</body>
+</html>

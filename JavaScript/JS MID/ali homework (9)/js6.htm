@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+        
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 90px;
+        background-color: blue;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        color: white;
+          
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -45px;
+    }
+        
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+    </style>
+<body>
+    <div class="thistt" class="tooltip" style="padding: 40px;">
+        <button>Button 111</button>
+        <span class="thistt" class="tooltiptext">Tooltip text 111</span>
+    </div>
+
+    <div class="tooltip">
+        <button>Button 222</button>
+        <span class="tooltiptext">Tooltip text 222</span>
+    </div>
+
+    <script>
+    const thistt = document.getElementsByClassName("thistt");
+
+    let cords = thistt[1].getBoundingClientRect();
+
+    if (cords.y < 0) {
+        thistt[0].style.bottom = "0%"
+        thistt[1].style.bottom = "0%"
+        
+        thistt[0].style.top = "100%"
+        thistt[1].style.top = "100%"
+    }
+
+    </script>
+</body>
+</html>

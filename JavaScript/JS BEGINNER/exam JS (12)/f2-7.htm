@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        let cost = prompt("Сумма покупки")
+        let sale;
+        let salep;
+        if (cost >= 200 && cost <= 300) {
+            sale = 0.97;
+            salep = "3%";
+        }
+        else if  (cost >= 300 && cost <= 500) {
+            sale = 0.95;
+            salep = "5%";
+        }
+        else if  (cost >= 500) {
+            sale = 0.93;
+            salep = "7%";
+        }
+        else {
+            sale = 1;
+            salep = "0%";
+        }
+        alert(`Сумма со скидкой ${cost*sale}. Скидка составляла ${salep}`);
+
+    </script>
+
+</body>
+</html>

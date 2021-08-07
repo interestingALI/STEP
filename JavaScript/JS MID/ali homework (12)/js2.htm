@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+    
+        Реализуйте класс ExtendedDate, унаследовав его от стандартного класса Date и добавив следующие возможности:
+        ■ метод для вывода даты (числа и месяца) текстом;
+        ■ метод для проверки – это прошедшая дата или будущая 
+        (если прошедшая, то метод возвращает false; если будущая или текущая, то true); 
+        ■ метод для проверки – високосный год или нет;
+        ■ метод, возвращающий следующую дату.
+        Создайте объект класса ExtendedDate и выведите на экран 
+        результаты работы новых методов.
+        
+        */
+
+        class ExtendedDate extends Date {
+            constructor(){
+                super();
+                this.time = new Date();
+            }
+            write(){
+                document.write(this.time);
+            }
+            passed(){
+                return this.time < new Date();
+            }
+            leapYear(){
+                let year = this.getFullYear();
+                return ( (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0) );
+            }
+            nextDate(){
+                let nextDay = new Date(this.time);
+                nextDay.setDate(this.time.getDate() + 1);
+                return nextDay;
+            }
+        }
+
+        console.log(date = new ExtendedDate())
+        date.write()
+        console.log(date.passed())
+        console.log(date.leapYear())
+        console.log(date.nextDate())
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js2</title>
+</head>
+<body>
+    <input id="input1" type="checkbox">
+    <input id="input2" type="checkbox">
+    <input id="input3" type="checkbox">
+    <input id="input4" type="checkbox">
+    <input id="input5" type="checkbox">
+    <input id="input6" type="checkbox">
+    <input id="input7" type="checkbox">
+    <input id="input8" type="checkbox">
+
+    <button onclick="build()">OK</button><br/>
+    <table id="tbl"></table>
+
+    <script>
+    let inputs = document.getElementsByTagName("input");
+
+    let input1 = document.getElementById("input1");
+    let input2 = document.getElementById("input2");
+    let input3 = document.getElementById("input3");
+    let input4 = document.getElementById("input4");
+    let input5 = document.getElementById("input5");
+    let input6 = document.getElementById("input6");
+    let input7 = document.getElementById("input7");
+    let input8 = document.getElementById("input8");
+    
+    let tbl = document.getElementById("tbl");
+
+    build();
+
+    function build(){
+
+        let kod = "<tr>";
+        let color = "";
+
+        //1
+        if (document.getElementById("input1").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+
+        //2
+        if (document.getElementById("input2").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+
+        //3
+        if (document.getElementById("input3").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+
+        //4
+        if (document.getElementById("input4").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+
+        //5
+        if (document.getElementById("input5").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+
+        //6
+        if (document.getElementById("input6").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+
+        //7
+        if (document.getElementById("input7").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+
+        //8
+        if (document.getElementById("input8").checked) {
+            color = "aqua";
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+        else {
+            color = ""
+            kod += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color} ;"></td>`;
+        }
+
+        kod += "</tr>";
+        tbl.innerHTML = kod;
+    }
+    </script>
+</body>
+</html>

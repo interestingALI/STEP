@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert(btn1())">Функция сложения 2-х объектов-дробей.</button>
+    <button onclick="alert(btn2())">Функция вычитания 2-х объектов-дробей.</button>
+    <button onclick="alert(btn3())">Функция умножения 2-х объектов-дробей.</button>
+    <button onclick="alert(btn4())">Функция деления 2-х объектов-дробей.</button>
+    <button onclick="btn5()">Функция сокращения объекта-дроби.</button>
+
+    <script>
+        confirm("Создать объект, хранящий в себе отдельно числитель и знаменатель дроби, и следующие функции для работы с этим объектом. Дробь: 7/3");
+    
+        let fraction = {
+            numerator: 7,
+            denominator: 3,
+        }
+
+        function btn1() {
+            return fraction.numerator + fraction.denominator;
+        }
+        function btn2() {
+            return fraction.numerator - fraction.denominator;
+        }
+        function btn3() {
+            return fraction.numerator * fraction.denominator;
+        }
+        function btn4() {
+            return (fraction.numerator / fraction.denominator).toFixed(2);
+        }
+        function btn5() {
+            fraction.numerator = fraction.numerator%fraction.denominator;
+            fraction.wholeNumber = Math.floor(fraction.numerator/fraction.denominator);
+
+            alert(`${fraction.wholeNumber} + ${fraction.numerator}/${fraction.denominator}`);
+        }
+    </script>
+</body>
+</html>

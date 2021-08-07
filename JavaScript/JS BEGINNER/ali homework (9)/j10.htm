@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="day">Day</label>
+    <p><input type="number" id="day"/></p>
+
+    <label for="month">Month</label>
+    <p><input type="number" id="month"/></p>
+
+    <label for="year">Year</label>
+    <p><input type="number" id="year"/></p>
+
+    <p><button onclick="ok()">OK</button></p>
+
+    <p id="result"></p>
+
+    <script>
+    const day = document.getElementById("day");
+    const month = document.getElementById("month");
+    const year = document.getElementById("year");
+
+    let dayN;
+    let monthN;
+    let yearN;
+
+    function ok() {
+
+    if ( month.value%2 == 0 && month.value != 2 && month.value != 8 && month.value != 12 ) {
+        if (day.value <= 30) {
+            dayN = +day.value + 1;
+            monthN = month.value;
+        }
+        if (dayN >= 31) {
+            dayN = 1;
+            monthN = +month.value + 1;
+        }
+    } 
+    else if ( month.value%2 == 1 || month.value == 8 || month.value == 12 ) {
+        if (day.value <= 31) {
+            dayN = +day.value + 1;
+            monthN = month.value;
+        }
+        if (dayN >= 32) {
+            dayN = 1;
+            monthN = +month.value + 1;
+        }
+    }
+
+
+    // Visokosniy ///////////////////////////
+    else if (month.value == 2) {
+
+        if (year.value%4==0 || year.value%100==0 && year.value%400==0) {
+            if (day.value <= 28) {
+            dayN = +day.value + 1;
+            monthN = +month.value
+            }
+            else if (+day.value >= 29) {
+            dayN = 1;
+            monthN = +month.value + 1;
+            }
+        }
+
+        else if (year.value%4 !=0 || year.value%100 !=0 && year.value%400 !=0) {
+            if (day.value <= 28) {
+            monthN = month.value
+            dayN = +day.value + 1;
+            }
+            if (dayN >= 29) {
+            dayN = 1;
+            monthN = +month.value + 1;
+            }
+        }
+    }
+    ///////////////////////////////////////
+
+
+
+
+    if (month.value <=12) {
+        yearN = year.value
+    }
+    if (monthN >= 13) {
+            monthN = 1;
+            yearN = +year.value + 1;
+        }
+
+
+
+        result.innerHTML = `Следующая дата ${dayN}.${monthN}.${yearN}`
+    }
+    </script>
+</body>
+</html>

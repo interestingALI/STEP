@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            body {
+                background-color: black;
+            }
+            #game { 
+                width: 800px; 
+                height: 600px;
+                margin: 50px auto;
+                box-shadow: 0 0 10px white;
+                position: relative;
+                background-color: black;
+            }
+            #ball {
+                width: 40px;
+                height: 40px;
+                background: radial-gradient(closest-side at 30% 30%, white, red);
+                border-radius: 20px;
+                position: absolute;
+            }
+            #bar {
+                width: 100px;
+                height: 10px;
+                background: gray;
+                position: absolute;
+                bottom: 10px;
+            }
+            #score {
+                font: 20px impact;
+                color: gray;
+                margin-left: 660px;
+                padding-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="game">
+            <div id="ball"></div>
+            <div id="bar"></div>
+            <div id="score"></div>
+        </div>
+
+        <script>
+            let score = document.getElementById("score")
+            let ball = document.getElementById("ball");
+            let bar = document.getElementById("bar");
+            let scoren = 0;
+            let x = 0;
+            let y = 0;
+            let dx = 5;
+            let dy = 5;
+            let barX = 0;
+            let start = setInterval(ballMove, 40);
+
+            document.onkeydown = function(e) {
+                if(e.keyCode == 37 && barX > 0) barX -= 20;
+                if(e.keyCode == 39 && barX < 700) barX += 20;
+                bar.style.left = barX + "px";
+            }
+
+            function ballMove() {
+                if(x < 0 || x >= 760) dx *= -1;
+                if(y < 0 || y > 540 && x > barX - 20 && x < barX + 80) dy *= -1;
+                if (y > 560) gameOver();
+                x += dx;
+                y += dy;
+                ball.style.left = x + "px";
+                ball.style.top = y + "px";
+                score.innerHTML = "Score: " + scoren;
+
+
+                //            SCORE + SPEED
+                if(y > 540 && x > barX - 20 && x < barX + 80 && y < 550) {
+                    scoren++;
+                    score.innerHTML = "Score: " + scoren;
+
+                    dx = dx*1.2;
+                    dy = dy*1.2;
+                }                                   //
+            }
+
+            function gameOver() {
+                clearInterval(start);
+                alert("GAME OVER !");
+            }
+        </script>
+    </body>
+</html>

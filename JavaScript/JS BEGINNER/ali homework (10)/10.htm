@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    <h1 id="first">Загадайте число от 0 до 100</h1>
+    <h2 id="here"></h2>
+
+    <button id="frst">Больше</button>
+    <button id="scnd">Меньше</button>
+    <button id="thrd">Он равен</button>
+
+
+    <script>
+        here = document.getElementById("here");
+        frst = document.getElementById("frst");
+        scnd = document.getElementById("scnd");
+        thrd = document.getElementById("thrd");
+        let max = 50;
+        let min = 0;
+        build()
+        function build() {
+            here.innerHTML = `Ваше число > ${max}, < ${max} или == ${max}?`
+        }
+
+        frst.onclick = function() {
+            min = max + 1
+            max = max * 2
+            build()
+        }
+        scnd.onclick = function() {
+            max = max /2
+            build()
+        }
+        thrd.onclick = function() {
+            first.innerHTML = "Я угадал!"
+            here.innerHTML = ""
+        }
+        
+
+    </script>
+
+</body>
+</html>

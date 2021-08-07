@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+        <style>
+            table { border-collapse: collapse; margin: 50px auto; font: 1.6em Anton; color: #666;}
+            td { width: 100px; height: 100px; border: 1px solid #333; text-align: center; cursor: pointer; background: #e1e1e1; }
+        </style>
+    </head>
+    <body>
+        <table id="tbl"></table>
+
+        <script>
+            const tbl = document.getElementById("tbl");
+            let arr = [];
+            let tabArr = [];
+            let previous = 0;
+
+            for(let i = 1; i <= 16; i++){
+                arr.push(i);
+            }
+
+            for(let i = 0; i < 4; i++){
+                tabArr[i] = [];   
+                for(let j = 0; j < 4; j++){
+                    let x = rand(0, arr.length - 1);
+                    tabArr[i][j] = arr[x];
+                    arr.splice(x, 1);
+                }
+            }
+            show();
+
+            function show() {
+                let kod = "";
+                for(let i = 0; i < 4; i++){
+                    kod += "<tr>";
+                    for(let j = 0; j < 4; j++){
+                        kod += "<td onclick=\"numClick(" + i + ", " + j + ")\"    id=" +  'a' + tabArr[i][j] + "     >" + tabArr[i][j] + "</td>";
+                    }
+                    kod += "</tr>";
+                }
+                tbl.innerHTML = kod;
+            }
+
+
+            /// IGRA
+
+            function numClick(i, j) {
+                if (tabArr[i][j] == 1 || tabArr[i][j]-previous == 1) {
+
+                    previous = tabArr[i][j];
+                    document.getElementById('a' + tabArr[i][j]).style.background = "green";
+                    
+                    if (previous == 16) {
+                        alert("YOU WON!!!  IT TOOK YOU: "+ Math.floor(performance.now()/1000) + " SECONDS");
+                    }
+                }
+                else {
+                    previous = 0;
+                    document.getElementById('a' + tabArr[i][j]).style.background = "red";
+                    alert("GAME OVER");
+                }
+            }
+            ///
+
+            function rand(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) ) + min;
+            }
+        </script>
+    </body>
+</html>

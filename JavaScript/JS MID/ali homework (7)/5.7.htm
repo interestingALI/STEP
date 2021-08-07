@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1 Допустим, у нас есть массив arr. Создайте функцию unique(arr), которая
+        // вернёт массив уникальных, не повторяющихся значений массива arr.
+
+        function unique(arr) {
+            return Array.from( new Set(arr) )
+        }
+
+        let values = ["Hare", "Krishna", "Hare", "Krishna",
+                "Krishna", "Krishna", "Hare", "Hare", ":-O" ];
+
+        alert( unique(values) ); // Hare,Krishna,:-O
+
+
+        //2 Мы хотели бы получить массив ключей map.keys()
+        // в переменную и далее работать с ними, например, применить метод .push.
+
+        let map = new Map();
+
+        map.set("name", "John");
+
+        let keys = map.keys();  //----> let keys = Array.from ( map.keys() )
+
+        // Error: keys.push is not a function
+        // Ошибка: keys.push -- это не функция
+        //Почему? Что нужно поправить в коде, чтобы вызов keys.push сработал?
+        keys.push("more");
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        number = prompt("Введите секунды");
+        ss = (number % 3600) % 60
+        mm = Math.floor((number % 3600) / 60)
+        hh = Math.floor(number / 3600)
+
+        alert(`Время- ${hh}:${mm}:${ss}`);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let age = prompt("Сколько тебе лет?");
+        let name;
+        if (age < 12) name = "ребенок";
+        else if (age < 18 && age >= 12) name = "подросток";
+        else if (age < 60 && age >= 18) name = "взрослый";
+        else if (age >= 60) name = "пенсионер";
+        alert( "Вы " + name);
+    </script>
+</body>
+</html>

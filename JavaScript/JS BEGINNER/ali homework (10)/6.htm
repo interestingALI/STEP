@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        kalk()
+
+        function kalk() {
+            let numbers = prompt(`Введите числа через ","`);
+            let arr = JSON.parse("[" + numbers + "]");
+            let symb = prompt("Введите символ. ( + , - , * , / , % )");
+
+            let result = eval(arr[0] + symb + arr[1]);
+            alert(result)
+
+            if (confirm("Хотите решить еще один пример?")) {
+                kalk()
+            } 
+            else {}
+        }
+
+    </script>
+
+</body>
+</html>

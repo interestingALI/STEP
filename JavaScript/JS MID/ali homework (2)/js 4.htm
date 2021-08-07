@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        let num = prompt("Написать функцию, которая определяет простое ли переданное число. Число:");
+        let dividers = 0
+		//isPrime()
+		
+		function isPrime() {
+        /*
+            for (let i = 1; i <= num; i++) if (num%i==0) dividers++
+            dividers<=2? num="Простое" : num= "Не простое"
+        */
+
+
+
+            //??
+            if (dividers >= 3) {
+                return false
+            }
+            else if (dividers<=2 && dividers>0) {
+                return true
+            }
+            else {
+                for (let i = 1; i <= num; i++){ 
+                    if(num%i==0) {
+                        dividers++
+                    }  
+                }
+                return isPrime()
+            }
+
+
+
+        }	
+        
+        alert(isPrime())
+        //alert(num)
+    </script>
+</body>
+</html>

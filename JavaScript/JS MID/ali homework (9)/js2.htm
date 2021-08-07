@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #modal {
+            display: none;
+            position: fixed; 
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4); 
+        }    
+        #modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">Open Modal</button>
+
+    <div id="modal">
+        <div id="modal-content">
+            <p>Hello!</p>
+            <button id="btn2">Close Modal</button>
+        </div>    
+    </div>
+
+    <script>
+        confirm("Создать html-страницу с кнопкой Открыть и модальным окном. На модальном окне должен быть текст и кнопка Закрыть. Изначально модальное окно не отображается. При клике на кнопку Открыть появляется модальное окно, на кнопку Закрыть – исчезает. ");
+
+        const modal = document.getElementById("modal");
+        const btn1 = document.getElementById("btn1");
+        const btn2 = document.getElementById("btn2");
+
+        btn1.onclick = function() {
+            modal.style.display = "block";
+        }
+        btn2.onclick = function() {
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

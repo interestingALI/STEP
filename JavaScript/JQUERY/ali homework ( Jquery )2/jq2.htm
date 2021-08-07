@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        li{
+            list-style-type: none;
+            margin: 0 2%;
+            font-size: 18px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            padding: 10px 15px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a:hover{
+            background-color: #00bf2d;
+        }
+        nav{
+            width: 100%;
+            background-color: #00ff3c;
+            padding: 10px;
+            text-align: center;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        body{
+            margin: 0;
+        }
+        button {
+            display: none;
+        }
+        @media only screen and (max-width: 540px) {
+            ul{
+                flex-direction: column;
+            }
+            li{
+                margin: 0;
+            }
+            a{
+                display: block;
+            }
+            button{
+                display: block;
+                padding: 1%;
+                width: 20%;
+                margin: 0 0 1% 40%;
+                font-size: 20px;
+                font-weight: bold;
+                background-color: #00b32a;
+                border: none;
+                outline: none;
+                cursor: pointer;    
+            }    
+        }   
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <button>✖</button>
+            <li>
+                <a href="Home.htm">Home</a>
+            </li>
+            <li>
+                <a href="AboutUs.htm">About us</a>
+            </li>
+            <li>
+                <a href="Services.htm">Services</a>
+            </li>
+            <li>
+                <a href="Works.htm">Works</a>
+            </li>
+            <li>
+                <a href="ContactUs.htm">Contact us</a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(() => {
+            $("button").click(function(){
+
+                $(this).text() == "☰"? $(this).text("🞬") : $(this).text("☰")
+
+                $("li").slideToggle('slow');
+            });
+        })
+    </script>
+</body>
+</html>

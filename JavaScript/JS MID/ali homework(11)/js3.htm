@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+		/* 
+
+			Реализовать класс, который описывает css класс. 
+			Класс CssClass должен содержать внутри себя:
+			■ название css класса;
+			■ массив стилей;
+			■ метод для установки стиля;
+			■ метод для удаления стиля;
+			■ метод getCss(), который возвращает css код в виде строки.
+
+		*/
+
+        class CssClass {
+            constructor(classs) {
+                this.classs = classs,
+                this.declaration = []
+            }
+                
+            addStyle(style) {
+                this.declaration.push(style)
+            }
+
+            removeStyle(style) {
+                let index = this.declaration.indexOf(style);
+                if (index > -1) {
+                    this.declaration.splice(index, 1);
+                }
+            }
+
+            getCss() {
+            let styles = this.declaration.join('; ')
+            return `.${this.classs}{ ${styles} }`
+            }
+        }
+
+    </script>
+</body>
+</html>

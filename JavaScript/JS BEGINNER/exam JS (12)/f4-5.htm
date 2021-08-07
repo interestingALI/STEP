@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>Введите ширину и длину прямоугольника. (Если в функцию передали 1 параметр, то она вычисляет площадь квадрата.)</p>
+    <input id="f" type="number">
+    <input id="s" type="number">
+    <button onclick="go()">ok</button>
+    
+    <script>
+        f = document.getElementById("f");
+        s = document.getElementById("s");
+
+        function go() {
+            
+            if (f.value == "") alert(s.value*s.value);
+            else if (s.value == "") alert(f.value*f.value);
+
+            else alert(f.value*s.value);
+
+        }
+        
+
+
+    </script>
+
+</body>
+</html>

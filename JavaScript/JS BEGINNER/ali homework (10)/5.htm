@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    
+    <script>
+        let numbers = prompt(`Введите числа, разделяя их с помощю ","`)
+        let arr = JSON.parse("[" + numbers + "]");
+        let pos=0;
+        let neg=0;
+        let nul=0;
+        let chet=0;
+        let nechet=0;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                pos++ 
+            }
+            else if(arr[i] < 0){
+                neg++ 
+            }
+            else {
+                nul++ 
+            }
+
+            if (arr[i]%2 == 0) {
+                chet++ 
+            }
+            else if (arr[i]%2 != 0) {
+                nechet++ 
+            }
+        }
+        alert(
+            "Вы ввели: " + arr +
+            "       Положительные: " + pos +
+            "       Отрицательные: " + neg +
+            "       Нули: " + nul +
+            "       Четные: " + chet +
+            "       Нечетные: " + nechet 
+        )
+    </script>
+
+</body>
+</html>

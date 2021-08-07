@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .bold:hover{
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .bold>ul{
+            font-weight: 400;
+            cursor: default;
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li>This PC
+            <ul>
+                <li class="bold" onclick="hide(this)">Local Disk (C:)
+                    <ul>
+                        <li>Program Files</li>
+                        <li>Users</li>
+                        <li>Windows</li>
+                    </ul>
+                </li>    
+                <li class="bold" onclick="hide(this)">Local Disk (D:)
+                    <uL>
+                        <li>New Folder 1</li>
+                        <li>New Folder 2</li>
+                        <li>New Folder 3</li>
+                    </uL>
+                </li>
+                <li class="bold">Local Disk (E:)</li>
+            </ul>    
+        </li>    
+    </ul>
+
+    <script>
+
+        /* Создать html-страницу с деревом вложенных директорий. 
+        При клике на элемент списка, он должен сворачиваться или 
+        разворачиваться. При наведении на элемент, шрифт должен становится жирным (с помощью CSS).  */
+
+        function hide(elem) {  
+            let hides = elem.querySelectorAll('ul');
+            hides[0].style.display == "none"? hides[0].style.display = "block" : hides[0].style.display = "none";
+        }
+    </script>
+</body>
+</html>

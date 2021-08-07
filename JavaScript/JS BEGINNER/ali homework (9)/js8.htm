@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let length = prompt( "Введите длину окружности" );
+        let perimeter = prompt( "Введите периметр квадрата" );
+        let radius = (length/Math.PI)/2;
+        let side = perimeter/4;
+        if (radius <= side) {
+            alert("Помещается")
+        }
+        else alert("Не помещается")
+    </script>
+</body>
+</html>

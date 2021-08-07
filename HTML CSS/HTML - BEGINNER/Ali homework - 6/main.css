@@ -1,0 +1,29 @@
+body {
+    background: lightblue;
+}
+table {
+    border-collapse: collapse;
+    width: 1400;
+    height: 900;
+    margin: auto;
+}
+th, td {
+    padding: 10px;
+}
+tr {
+    height: 70;
+    text-align: center;
+}
+h1 {
+    font: italic small-caps 700 2.2em Arial, Helvetica, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 5px #000;
+}
+li {
+   font-size: 24;
+    font: small-caps Arial, Helvetica, sans-serif;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}

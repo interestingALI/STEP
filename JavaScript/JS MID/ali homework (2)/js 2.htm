@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+    let nums = prompt("Написать функцию поиска наибольшего общего делителя ( Разделяйте цифры с помощью пробела )");
+    let arr = nums.split(" ");
+    let nod = 1;
+	
+	function findNod() {
+		for(i = 1; i <= arr[0] && i <= arr[1]; i++){
+			if(arr[0]%i==0 && arr[1]%i==0) nod = i;
+		}
+	}
+
+    findNod();
+    alert(nod);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+header {
+    height: 137px;
+    padding: 37px 0 0 0; 
+    background: #fff url('img/headerbg.jpg') repeat-x;
+}
+.container {
+    width: 940px;
+    margin: auto;
+}
+nav img {
+    float: left;
+}
+nav ul {
+    float: right;
+}
+nav ul li {
+    padding: 0 10px 8px 10px;
+    display: inline-block;
+    font: .7rem Tahoma;
+    color: #b7b7b7;
+    border-left: 1px dotted #d6d6d6;
+}
+nav ul li a {
+    display: block;
+    font: bold .9rem Georgia;
+    color: #666;
+    text-transform: uppercase;
+}
+main {
+    height: 1400px;
+    padding: 22px 0 0 0;
+    background: #fff url('img/mainbg.jpg') repeat-x;
+}
+#slider {
+    height: 340px;
+    border: 1px solid #c6c6c6;
+    border-radius: 7px;
+    background: url('img/slider.jpg') center;
+    box-shadow: 0 2px 7px #000;
+}
+h1 {
+    padding: 24px 0 15px 0;
+    font: bold 1.5em Georgia;
+    color: #000;
+    text-align: center;
+  }
+h2 {
+    font: 1.3em Georgia;
+    color: #11719e;
+  }
+h3 {
+    padding: 0 0 6px 0;
+    font: 1.125em Georgia;
+    color: #444;
+    border-bottom: 1px dashed #d3d3d3;
+}
+h4 {
+    font-size: .75em "Myriad Pro";
+    color: #8c8c8c;
+  }
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .col {
+      width: 300px;
+      padding: 30px 0;
+      float: left;
+      margin: 0 20px 0 0;
+  }
+  .col:last-child {
+    margin: 0;
+  }
+  .arttxt {
+    font: 13px/1.4 Helvetica;
+    color: #3e3e3e;
+  }
+  .artimg {
+      margin: 15px 0;
+  }
+  .btn1 {
+      margin: 20px 0 0 0;
+      padding: 10px 12px;
+      width: 160px;
+      border: 1px solid #d8d8d8;
+      border-radius: 5px;
+      background: url('img/btn1.jpg') repeat-y;
+      text-align: left;
+      font: 12px Helvetica;
+      color: #016999;
+  }
+  .btn1 span {
+      float: right;
+  }
+
+footer {
+    height: 180px;
+    background: #333;
+    border-top: 10px solid #4c4c4c;
+}
+.bottomps {
+    margin-top: 15px;
+    font: .75em/1.167 Helvetica;
+    color: #444;
+    text-align: left;
+}
+#newsletter {
+    margin-top: 40px;
+    font: bold 1.12em/0.77 GillSansMT ;
+    color: #444;
+    text-align: left;
+}
+.social {
+    margin-top: 6px;
+}
+#newsletterp {
+    margin-top: 10px;
+    font: 0.75em/1.16 Tahoma;
+    color: #444;
+    text-align: left;
+}
+.email {
+    margin: 14px 0 11px 0;
+    padding: 10px;
+    width: 290px;
+    height: 30px;
+    border-radius: 4px;
+    border-color: #cfcfcfce;
+    font: 10px Verdana;
+    text-align: left;
+}
+.bbutton {
+    margin-bottom: 23px;
+    width: 160px;
+    height: 30px;
+    border-color: #004b80;
+    border-radius: 3px;
+    background-image: url(img/buttonbg.jpg);
+    font-size: 0.8em Georgia;
+    color: #fff
+}
+.bbutton :hover {
+    background-color: rgb(0, 0, 136) ;
+}
+
+.name {
+    margin-top: 15px;
+    padding: 10px;
+    width: 290px;
+    height: 30px;
+    border-radius: 4px;
+    border-color: #cfcfcfce;
+    font: 10px Verdana;
+    text-align: left;
+}
+textarea {
+    margin-bottom: 11px;
+    padding: 10px;
+    height: 132px;
+    width: 290px;
+    border-radius: 4px;
+    border-color: #cfcfcfce;
+    font: 10px Verdana;
+    text-align: left;
+}
+.email2 {
+    margin: 20px 0 19px 0;
+    padding: 10px;
+    width: 290px;
+    height: 30px;
+    border-radius: 4px;
+    border-color: #cfcfcfce;
+    font: 10px Verdana;
+    text-align: left;
+}
+#news {
+    border-width: 2px; 
+    padding: 0 0 10px 0;
+    list-style: none;
+	margin-top: 10px;
+    text-align: left;
+}
+.news2 {
+    margin-bottom: 5px;
+    border-bottom: dotted #d3d3d3;
+    border-width: 2px;
+    padding: 10px;
+    float: right;
+}
+.newsimg {
+    margin-right: 8px;
+    float: left;
+}
+.newstext {
+    font-size: 0.75em/1.1 Tahoma;
+    color: #444;
+}
+#part1 {
+    font: .68em/0.9 Tahoma;
+    margin-top: 17px;
+    color: #999;
+    float: left;
+    text-decoration: none;
+}
+#part2 {
+    font: .68em/0.9 Tahoma;
+    margin-top: 17px;
+    color: #999;
+    float: right;
+    text-decoration: none;
+}
+#footerlinks {
+    margin: 10px 0 10px 0;
+}
+.ftlnk1 { 
+    color:#999;
+    text-decoration:none;
+}

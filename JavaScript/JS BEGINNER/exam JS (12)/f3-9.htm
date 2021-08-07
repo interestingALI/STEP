@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="table"></table>
+    
+    <script>
+
+        const table = document.getElementById("table");
+        let kod="";
+        for(let s = 1; s <= 10; s++) {
+            kod+= `<tr >`;
+            for(let f = 2; f <= 9; f++){
+                kod += `<td style="padding-right: 30px">` + f + "×" + s + " = " + (f * s) + "<td />";
+            }
+            kod+= "<tr />";
+        }
+        table.innerHTML = kod;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Homework</title>
+        <style>
+            .border {
+            border: 2px solid black;
+            }
+            .width {
+                text-align: center;
+                width: 5%;
+            }
+            .width-20 {
+                width: 20%;
+                text-align: center;
+            }
+            .margin {
+                margin: 10% 0 0 40% ;
+            }
+            .display {
+                display: inline-block;
+            }
+            .padding {
+                padding: 25px;
+            }
+            p {
+                text-align: left;
+            }
+        </style>
+	</head>
+	<body>
+        <div class="margin">
+            <input id="e1" class="border width display"></input>
+            <button onclick="div()" class="width display">&#8592;&#8594;</button>
+            <input id="e2" class="border width display"></input>
+        </div>
+
+        <div class="margin border padding width-20">
+            <input id="i1" type="text" class="border width-20" />
+            <input id="i2" type="text" class="border width-20" />
+            <input id="i3" type="text" class="border width-20" />
+            <button onclick="div2()">Ok</button>
+            <p>Cem:<span id="cem"> </span></p>
+            <p>Orta:<span id="orta"> </span></p>
+            <p>Hasil:<span id="hasil"> </span></p>
+        </div>
+         
+        <!-- Секретный input который сохраняет e2 value -->
+        <input id="e3" style="opacity: 0"></input>
+
+        <script>
+
+        const e1 = document.getElementById("e1");
+        const e2 = document.getElementById("e2");
+        const e3 = document.getElementById("e3");
+        function div() {
+            e3.value = e2.value ;
+            e2.value = e1.value ; 
+            e1.value = e3.value ; 
+        }
+
+
+        const i1 = document.getElementById("i1");
+        const i2 = document.getElementById("i2");
+        const i3 = document.getElementById("i3");
+        function div2(){
+				cem.innerHTML = " " + (+i1.value + +i2.value + +i3.value);
+				orta.innerHTML = " " + (+i1.value + +i2.value + +i3.value) / 3;
+				hasil.innerHTML = " " + +i1.value * +i2.value * +i3.value;
+		}
+        </script>
+	</body>
+</html>

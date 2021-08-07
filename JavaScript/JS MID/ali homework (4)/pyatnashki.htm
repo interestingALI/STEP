@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+        <style>
+            table { border-collapse: collapse; margin: 50px auto; font: 1.6em Anton; color: #666;}
+            td { width: 100px; height: 100px; border: 1px solid #333; text-align: center;  }
+        </style>
+    </head>
+    <body>
+        <table id="tbl"></table>
+
+        <script>
+            const tbl = document.getElementById("tbl");
+            let arr = [""];
+            let tabArr = [];
+            let dirka = [];
+
+            for(let i = 1; i <= 15; i++){
+                arr.push(i);
+            }
+
+            for(let i = 0; i < 4; i++){
+                tabArr[i] = [];   
+                for(let j = 0; j < 4; j++){
+                    let x = rand(0, arr.length - 1);
+                    if(arr[x] == "") {
+                        dirka[0] = i;
+                        dirka[1] = j;
+                    }
+                    tabArr[i][j] = arr[x];
+                    arr.splice(x, 1);
+
+                }
+            }
+            show();
+            
+
+            //Domashka
+            function gameEnd() {
+                let count = 0;
+                let winTable = [
+                    [1, 2, 3, 4],
+                    [5, 6, 7, 8],
+                    [9, 10, 11, 12],
+                    [13, 14, 15, ""]
+                ]
+
+
+                for(let i = 0; i < 4; i++){
+                    for(let j = 0; j < 4; j++){
+                        if (tabArr[i][j]==winTable[i][j]) {
+                            count++;
+                            if (count==16) {
+                            alert("YOU WON! IT TOOK YOU: "+ Math.floor(performance.now()/1000) + " SECONDS" );
+                            } 
+                        }
+                    }
+                }
+            }    
+            ///
+
+            function show() {
+                let kod = "";
+                for(let i = 0; i < 4; i++){
+                    kod += "<tr>";
+                    for(let j = 0; j < 4; j++){
+                        kod += "<td onclick=\"move(" + i + ", " + j + ")\"    id=" +  'a' + tabArr[i][j] + "    >" + tabArr[i][j] + "</td>";
+                    }
+                    kod += "</tr>";
+                }
+                tbl.innerHTML = kod;
+                gameEnd();
+            }
+
+            function move(i, j) {
+                if(i == dirka[0] && Math.abs(j - dirka[1]) == 1 ||
+                    j == dirka[1] && Math.abs(i - dirka[0]) == 1 ) {
+                    tabArr[dirka[0]][dirka[1]] = tabArr[i][j];
+                    tabArr[i][j] = "";
+                    dirka[0] = i;
+                    dirka[1] = j;
+
+                    show();
+                }
+            }
+            function rand(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) ) + min;
+            }
+        </script>
+    </body>
+</html>

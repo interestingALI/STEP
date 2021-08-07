@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Homework</title>
+        <style>
+            body {
+                background-color: black;
+                color: #e6e6e6;
+                font-size: 20px;
+            }
+            input {
+                color: #e6e6e6;
+                font-size: 20px;
+                background-color: #b4b4b450;
+                border: 0;
+                outline: 0;
+            }
+            h1 {
+                padding-top: 20vh;
+                text-align: center;
+            }
+            .border {
+                border: 2px solid #b4b4b4;
+            }
+            .width {
+                text-align: center;
+                width: 50px;
+            }
+            .width-30 {
+                width: 30%;
+                text-align: center;
+            }
+            .margin {
+                margin: 0 30% 0 33%;
+            }
+            .padding {
+                padding: 25px;
+            }
+            p {
+                font-size: 24px;
+                text-align: left;
+            }
+            button {
+                color: #e6e6e6;
+                background-color: rgba(255, 255, 255, 0);
+                border: 1px solid #b4b4b4;
+                outline: 0;
+                font-size: 20px;
+            }
+            button:active {
+                color: red;
+                background-color: rgba(255, 255, 255, 0.250);
+            }
+        </style>
+	</head>
+	<body>
+        <h1>Kök Calculator ™</h1>
+        <div class="margin border width-30 padding">
+            <input class="width" id="xs" type="number"/> x² + 
+            <input class="width" id="nx" type="number"/> x + 
+            <input class="width" id="c" type="number"/> 
+            <button onclick="calc()">=</button> 0
+
+            <p>
+                x₁= <span id="xa"></span>
+            </p>
+            <span id="kok"></span>
+            <p>
+                x₂= <span id="xb"></span>
+            </p>
+
+        </div>
+        <script>
+
+			const xs = document.getElementById("xs");
+			const nx = document.getElementById("nx");
+            const cx = document.getElementById("c");
+            
+            const xa = document.getElementById("xa");
+            const xb = document.getElementById("xb");
+            const kok = document.getElementById("kok");
+            
+
+            function calc() {
+
+                let dscrmnt = Math.pow(nx.value, 2) - (4 * xs.value * cx.value);
+                
+
+                xa.innerHTML =  (0 - nx.value + Math.sqrt( dscrmnt )) / (2 * xs.value);
+                xb.innerHTML =  (0 - nx.value - Math.sqrt( dscrmnt )) / (2 * xs.value);
+
+                if (dscrmnt > 0) kok.innerHTML =`2 Kökü Var.`;
+                else if (dscrmnt < 0) kok.innerHTML =`Kökü Yoxdur.`;
+                else  kok.innerHTML =`1 Kökü Var.`;
+
+			}
+
+        </script>
+	</body>
+</html>

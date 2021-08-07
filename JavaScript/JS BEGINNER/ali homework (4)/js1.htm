@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>js1</title>
+</head>
+<body>
+    <input type="checkbox" id="chet" value="chet">
+    <label for="chet"> Чёт </label>
+
+    <input type="checkbox" id="nechet" value="nechet">
+    <label for="nechet"> Нечёт </label>
+
+    <button onclick = view()>OK</button><br/>
+    <select id="list"></select>
+    
+    <script>
+
+        let chet = document.getElementById ("chet");
+        let nechet = document.getElementById ("nechet");
+        let list = document.getElementById ("list");
+
+        let pupil = ["Ronan", "Rocco", "Julia", "Philip", "Henry", "Hashim", "Ronald", "Robert", "Lee", "Ted",];
+
+        function view() {
+            kod = "";
+            if (document.getElementById("chet").checked) {
+                for(let i = 0; i < pupil.length; i= i + +2) {
+                    kod += "<option>" + pupil[i] + "</option>";
+                    list.innerHTML = kod; 
+                }
+            }
+            if (document.getElementById("nechet").checked) {
+                for(let i = 1; i < pupil.length; i= i + +2) {
+                    kod += "<option>" + pupil[i] + "</option>";
+                    list.innerHTML = kod; 
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        money = prompt("Сумма денег в кошельке");
+        cost = prompt("Цена одной шоколадки");
+
+        number = Math.floor(money / cost);
+        mleft = money % cost;
+        
+
+        alert(`Вы можете купить ${number} шоколад(ов). У вас останется ${mleft.toFixed(2)} денег`);
+
+    </script>
+
+</body>
+</html>

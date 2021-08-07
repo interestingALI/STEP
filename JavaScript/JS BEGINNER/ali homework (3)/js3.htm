@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            table { border-collapse: collapse; }
+            td { border: 1px solid gray; width: 50px; height: 50px; text-align: center; }
+            .lime { background: lime }
+            .white { background: white }
+            .margin {margin: 20px 30px 0 0;}
+            .display {display: inline-block;}
+            .margin-0 {margin: 0;}
+        </style>
+    </head>
+    <body>
+        <div class="display">
+            <table id="tablica1"></table>
+            <table id="tablica2" class="margin"></table>
+        </div>
+        <div class="display">  
+            <table id="tablica3" class="margin"></table>
+            <table id="tablica4" class="margin"></table>
+        </div>
+        <div class="display">  
+            <table id="tablica5" class="margin"></table>
+
+                        <!-- WRONG -->
+            <table id="tablica6" class="margin"></table>
+        </div>
+
+                        <!-- WRONG -->
+        <table id="tablica7" class="margin"></table>
+
+
+
+
+        <script>
+            const tablica1 = document.getElementById("tablica1");
+            let kod1 = "";
+            let color = "";
+			for(let i = 1; i <= 4 ;i++) {
+				kod1 += "<tr>";
+				for(let j = 1; j <= 4; j++) {
+                    color = ( j ) % 2 ? "lime" : "white";
+					kod1 += `<td class="${color}"></td>`;
+				}
+				kod1 += "</tr>";
+			}
+            tablica1.innerHTML = kod1;
+
+
+            const tablica2 = document.getElementById("tablica2");
+            let kod2 = "";
+            let color2 = "";
+			for(let i = 1; i <= 4 ;i++) {
+				kod2 += "<tr>";
+				for(let j = 1; j <= 4; j++) {
+                    color2 = (i + j) % 2 ? "white" : "lime";
+					kod2 += `<td class="${color2}"></td>`;
+				}
+				kod2 += "</tr>";
+			}
+            tablica2.innerHTML = kod2;
+
+            const tablica3 = document.getElementById("tablica3");
+            let kod3 = "";
+            let color3 = "";
+			for(let i = 1; i <= 4 ;i++) {
+				kod3 += "<tr>";
+				for(let j = 1; j <= 4; j++) {
+                    color3 = (i - j) < 1 ? "lime" : "white";
+					kod3 += `<td class="${color3}"></td>`;
+				}
+				kod3 += "</tr>";
+			}
+            tablica3.innerHTML = kod3;
+
+            const tablica4 = document.getElementById("tablica4");
+            let kod4 = "";
+            let color4 = "";
+			for(let i = 1; i <= 4 ;i++) {
+				kod4 += "<tr>";
+				for(let j = 1; j <= 4; j++) {
+                    color4 = ( i ) % 2 ? "white" : "lime";
+					kod4 += `<td class="${color4}"></td>`;
+				}
+				kod4 += "</tr>";
+			}
+            tablica4.innerHTML = kod4;
+
+            const tablica5 = document.getElementById("tablica5");
+            let kod5 = "";
+            let color5 = "";
+			for(let i = 1; i <= 4 ;i++) {
+				kod5 += "<tr>";
+				for(let j = 1; j <= 4; j++) {
+                    color5 = (j + i) < 6 ? "lime" : "white";
+					kod5 += `<td class="${color5}"></td>`;
+				}
+				kod5 += "</tr>";
+			}
+            tablica5.innerHTML = kod5;
+
+            //WRONG
+            const tablica6 = document.getElementById("tablica6");
+            let kod6 = "";
+            let color6 = "";
+			for(let i = 1; i <= 4 ;i++) {
+				kod6 += "<tr>";
+				for(let j = 1; j <= 4; j++) {
+                    color6 =  ( j ) < 3  ? "lime" : "white";
+					kod6 += `<td class="${color6}"></td>`;
+				}
+				kod6 += "</tr>";
+			}
+            tablica6.innerHTML = kod6;
+
+            //WRONG
+            const tablica7 = document.getElementById("tablica7");
+            let kod7 = "";
+            let color7 = "";
+			for(let i = 1; i <= 8 ;i++) {
+				kod7 += "<tr>";
+				for(let j = 1; j <= 8; j++) {
+                    color7 = (i**2) < j ? "lime" : "white";
+					kod7 += `<td class="${color7}"></td>`;
+				}
+				kod7 += "</tr>";
+			}
+            tablica7.innerHTML = kod7;
+        </script>
+    </body>
+</html>

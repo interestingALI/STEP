@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+    numbers = prompt(`Введите ширину и длину прямоугольника через ",".  (Если в функцию передали 1 параметр, то она вычисляет площадь квадрата.)`)    
+    let arr = JSON.parse("[" + numbers + "]");
+    let result;
+
+    if (arr.length == 2) {
+        result = arr[0] * arr[1]
+    }
+    else {
+        result = arr[0] * arr[0]
+    }
+    alert(result)
+
+    </script>
+
+</body>
+</html>

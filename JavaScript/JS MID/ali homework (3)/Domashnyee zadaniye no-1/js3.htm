@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        confirm("Создать объект, описывающий время (часы, минуты, секунды), и следующие функции для работы с этим объектом. 1. Функция вывода времени на экран.");
+
+        let time = {
+            hours: 13,
+            minutes: 40,
+            seconds: 35
+        }
+
+        function currentTime() {
+            return `${time.hours}:${time.minutes}:${time.seconds}`;
+        }
+        alert(currentTime());
+
+        let changedSeconds = prompt("Функция изменения времени на переданное количество секунд. Секунды:")
+        let changedMinutes = prompt("Функция изменения времени на переданное количество минут. Минуты:")
+        let changedHours = prompt("Функция изменения времени на переданное количество часов. Часы:")
+        
+        changeTime();
+        function changeTime() {
+            time.hours += +changedHours;
+            time.minutes += +changedMinutes;
+            time.seconds += +changedSeconds;
+
+            if (time.seconds>60) {
+                time.minutes += Math.floor(time.seconds/60)
+                time.seconds = time.seconds%60
+            }
+
+            if (time.minutes>60) {
+                time.hours += Math.floor(time.minutes/60)
+                time.minutes = time.minutes%60
+            }
+        }
+    </script>
+</body>
+</html>

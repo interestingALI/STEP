@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+        
+        Реализовать класс, описывающий простой маркер. В классе 
+        должны быть следующие компоненты:
+        ■ поле, которое хранит цвет маркера;
+        ■ поле, которое хранит количество чернил в маркере (в процентах);
+        ■ метод для печати (метод принимает строку и выводит 
+        текст соответствующим цветом; текст выводится до тех 
+        пор, пока в маркере есть чернила; один не пробельный 
+        символ – это 0,5% чернил в маркере).
+        Реализовать класс, описывающий заправляющийся маркер, 
+        унаследовав его от простого маркера и добавив метод для заправки 
+        маркера.
+        Продемонстрировать работу написанных методов.
+        
+        */
+        let count = 0;
+
+        class Marker {
+            constructor(color){
+                this._color = color;
+                this._ink = 100;
+
+                document.write("<p></p>");
+                this._num = count;
+                this.paper = document.getElementsByTagName("p")[this._num];
+                count++ ;
+            }
+            write(text){
+                for (let i = 0; i < text.length; i++) {
+                    if (this._ink != 0) {
+                        if (text[i] == " ") {
+                            this._ink+= 0.5
+                        }
+                        this.paper.innerHTML += text[i];
+                        this.paper.style.color = this._color;
+                        this._ink -= 0.5;
+                    }   
+                    else {
+                        alert("There is no more ink!")
+                        break;
+                    } 
+                }
+            }
+        }
+
+        class RefillableMarker extends Marker {
+            fill(i) {
+                this._ink += i;
+
+                this._ink > 100 ? this._ink = 100 : "";
+            }
+        }
+
+        let marker = new RefillableMarker("blue");
+        marker.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        marker.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        marker.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        marker.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        marker.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        marker.fill(100);
+        marker.write(" ///////  Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = prompt("Введите трехзначное число");
+        let word;
+        if ( number[0] == number[1] || number[0] == number[2] || number[1] == number[2] ) word = "есть одинаковые цифры";
+        else word = "нет одинаковых цифр";
+        alert(`В вашем числе ${word}`);
+    </script>
+</body>
+</html>

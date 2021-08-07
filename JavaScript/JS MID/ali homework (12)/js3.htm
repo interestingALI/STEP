@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+        
+        Задание 3
+            Реализовать класс Employee, описывающий работника, и создать массив работников банка.
+
+            Реализовать класс EmpTable для генерации html кода таблицы 
+            со списком работников банка. Массив работников необходимо 
+            передавать через конструктор, а получать html код с помощью 
+            метода getHtml().
+            Создать объект класса EmpTable и вывести на экран результат 
+            работы метода getHtml().
+        Задание 4
+            Реализовать класс StyledEmpTable, который наследуется от 
+            класса EmpTable. Добавить метод getStyles(), который возвращает 
+            строку со стилями для таблицы в тегах style. Переопределить 
+            метод getHtml(), который добавляет стили к тому, что возвращает 
+            метод getHtml() из родительского класса. 
+            Создать объект класса StyledEmpTable и вывести на экран 
+            результат работы метода getHtml().
+
+        */
+
+        class Employee {
+            constructor(name, job, salary) {
+                this.name = name;
+                this.job = job;
+                this.salary = salary;
+            }
+        }
+        let empArr = [
+            new Employee("Gordon Freeman", "Senior Developer", 3500),
+            new Employee("Joseph Biden", "Manager", 2000),
+            new Employee("Barack Obama", "Manager", 2000),
+            new Employee("Rick Sanchez", "Marketing Director", 2500),
+            new Employee("Soap MacTavish", "Security Guard", 1200),
+            new Employee("John Johnson", "Engineer", 3500),
+            new Employee("Mary Johnson", "Computer Analyst", 2500)
+        ];
+
+
+        class EmpTable {
+            constructor(arr){
+                this.arr = arr
+            }
+
+            getHtml(){
+                const body = document.getElementsByTagName('body')[0],
+                table = document.createElement('table');
+                body.appendChild(table);
+                const tr = document.createElement("tr");
+                const th1 = document.createElement("th");
+                th1.textContent = "Name";
+                const th2 = document.createElement("th");
+                th2.textContent = "Job";
+                const th3 = document.createElement("th");
+                th3.textContent = "Salary";
+                tr.append(th1);
+                tr.append(th2);                         // Создаю все нужные элементы
+                tr.append(th3);   
+                table.append(tr);         
+                for (let i = 0; i < this.arr.length; i++) {
+                    let tr2 = document.createElement("tr");
+                    table.append(tr2);
+                    for (let j in this.arr[i]) {    
+                        let td = document.createElement("td");
+                        td.textContent = this.arr[i][j];         // Добавляю работников
+                        tr2.append(td);
+                    }
+                }
+            }
+        }
+
+        class StyledEmpTable extends EmpTable {   ///?
+            getHtml(style){
+                const body = document.getElementsByTagName('body')[0],
+                table = document.createElement('table');
+                body.appendChild(table);
+                const tr = document.createElement("tr");
+                const th1 = document.createElement("th");
+                th1.textContent = "Name";
+                const th2 = document.createElement("th");
+                th2.textContent = "Job";
+                const th3 = document.createElement("th");
+                th3.textContent = "Salary";
+                tr.append(th1);
+                tr.append(th2);                         // Создаю все нужные элементы
+                tr.append(th3);   
+                table.append(tr);         
+                for (let i = 0; i < this.arr.length; i++) {
+                    let tr2 = document.createElement("tr");
+                    table.append(tr2);
+                    for (let j in this.arr[i]) {    
+                        let td = document.createElement("td");
+                        td.textContent = this.arr[i][j];         // Добавляю работников
+                        tr2.append(td);
+                    }
+                }
+                table.setAttribute("style", style)
+            }
+        }
+    </script>
+</body>
+</html>

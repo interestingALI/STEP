@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>Press Ctrl+E to edit text</p>
+    <p>Press Ctrl+S to save text</p>
+    <hr style="width: 35%; margin-left: 0;" />
+    <div style="width: 35%; margin-left: 0;">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+Laboriosam est ipsam rerum accusantium consectetur aperiam asperiores dolorem, amet magnam!
+Non aliquid facere repudiandae? Qui debitis repellat commodi officia perferendis illum eveniet eius accusamus mollitia,
+accusantium et ducimus obcaecati veritatis dolorem ad deleniti omnis doloremque sapiente eligendi. Nam porro quas ad!
+    </div>
+
+    <script>
+		/*
+		
+			Создать html-страницу для отображения/редактирования текста. 
+			При открытии страницы текст отображается с помощью тега 
+			div. При нажатии Ctrl+E, вместо div появляется textarea с тем 
+			же текстом, который теперь можно редактировать. При нажатии 
+			Ctrl+S, вместо textarea появляет div с уже измененным текстом. 
+			Не забудьте выключить поведение по умолчанию для этих сочетаний клавиш.
+			
+		*/
+	
+        const div = document.getElementsByTagName("div")[0];
+        let txtAr = "";
+        document.body.addEventListener("keydown", (event) => {
+            event.preventDefault();
+            if (event.code == "KeyE" && event.ctrlKey) {
+                txtAr = document.createElement("textarea");
+                txtAr.setAttribute("cols", 64);
+                txtAr.setAttribute("rows", 12);
+                txtAr.textContent = div.textContent;
+                div.replaceWith(txtAr);
+
+            }
+            else if (event.code == "KeyS" && event.ctrlKey) {
+                txtAr.replaceWith(div);
+                div.textContent = txtAr.textContent;
+            }
+        })    
+
+    </script>
+</body>
+</html>

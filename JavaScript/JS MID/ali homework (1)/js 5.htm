@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table id="table"></table>
+    
+    <script>
+
+        const table = document.getElementById("table");
+        let kod="";
+        for(let second = 1; second <= 10; second++) {
+            kod+= `<tr >`;
+            for(let first = 2; first <= 9; first++){
+                kod += `<td style="padding-right: 30px">` + first + "×" + second + " = " + (first * second) + "<td />";
+            }
+            kod+= "<tr />";
+        }
+        table.innerHTML = kod;
+
+    </script>
+</body>
+</html>

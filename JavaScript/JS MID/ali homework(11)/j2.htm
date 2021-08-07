@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+       Реализовать класс, описывающий html элемент.
+        Класс HtmlElement должен содержать внутри себя:
+        ■ название тега;
+        ■ самозакрывающийся тег или нет;
+        ■ текстовое содержимое;
+        ■ массив атрибутов;
+        ■ массив стилей;
+        ■ массив вложенных таких же тегов;
+        ■ метод для установки атрибута;
+        ■ метод для установки стиля;
+        ■ метод для добавления вложенного элемента в конец текущего элемента;
+        ■ метод для добавления вложенного элемента в начало текущего элемента;
+        ■ метод getHtml(), который возвращает html код в виде
+        строки, включая html код вложенных элементов.
+        С помощью написанного класса реализовать следующий блок
+        и добавить его на страницу с помощью document.write().
+        */
+
+        class HtmlElement {
+            constructor(tagName, selfClsng){
+                this.tagName = tagName,
+                this.selfClsng = selfClsng,
+                this.innerTxt = "",
+                this.arrayAttr = [],
+                this.arrayStyle = [],
+                this.arrayTags = []
+            }
+            addAttribute(attr){
+                this.arrayAttr.push(attr);
+            }
+            addStyle(style){
+                this.arrayStyle.push(style);
+            }
+            innerAfter(elem){
+                if(this.selfClsng) return;
+                else if (typeof elem === 'object') this.arrayTags.push(elem); 
+                    else this.innerTxt = elem;
+            }
+            innerBefore(elem){
+                if(this.selfClsng) return;
+                else if (typeof elem === 'object') this.arrayTags.unshift(elem); 
+                    else this.innerTxt = elem;
+            }
+
+            getHtml() {
+                let attrs = this.arrayAttr.join(" ") + " ";
+                let styles = this.arrayStyle.length > 0 ? 'style="' + this.arrayStyle.join("; ") + '"' : '';
+                let inner = this.arrayTags.map( item => item.getHtml() ).join(" \n ");
+
+                if (this.selfClsng) return '<' + this.tagName + ' ' + attrs + styles + ' />';
+                else return '<' + this.tagName + ' ' + attrs + styles + '>' + this.innerTxt + inner + '</' + this.tagName + '>';
+            }
+        }
+
+
+        let div = new HtmlElement('div', false);
+        div.addAttribute('id="wrapper"');
+        div.addStyle('display: flex');
+
+
+        // 1 //
+        let div2 = new HtmlElement('div', false);
+        div2.addStyle('width: 300px');
+        div2.addStyle('margin: 10px');
+
+        let h3 = new HtmlElement('h3', false);
+        h3.innerBefore('What is Lorem Ipsum?');
+
+        let img = new HtmlElement('img', true);
+        img.addAttribute('src="lipsum. jpg"');
+        img.addAttribute('alt="Lorem Ipsum"');
+        img.addStyle('width: 100%');
+
+        let p = new HtmlElement('p', false);
+        p.addStyle('text-align: justify');
+        p.innerBefore(`“Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.”`);
+
+        let a = new HtmlElement('a', false);
+        a.addAttribute('href="https://mw.lipsum.com/"');
+        a.addAttribute('target="_blank"');
+        a.innerBefore('More...');
+
+        div2.innerAfter(h3);
+        div2.innerAfter(img);
+        div2.innerAfter(p);
+        div2.innerAfter(a);
+        div.innerBefore(div2);
+
+
+
+        // 2 //
+        let div2_2 = new HtmlElement('div', false);
+        div2_2.addStyle('width: 300px');
+        div2_2.addStyle('margin: 10px');
+
+        let h3_2 = new HtmlElement('h3', false);
+        h3_2.innerBefore('What is Lorem Ipsum?');
+
+        let img_2 = new HtmlElement('img', true);
+        img_2.addAttribute('src="lipsum. jpg"');
+        img_2.addAttribute('alt="Lorem Ipsum"');
+        img_2.addStyle('width: 100%');
+
+        let p_2 = new HtmlElement('p', false);
+        p_2.addStyle('text-align: justify');
+        p_2.innerBefore(`“Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.”`);
+
+        let a_2 = new HtmlElement('a', false);
+        a_2.addAttribute('href="https://mw.lipsum.com/"');
+        a_2.addAttribute('target="_blank"');
+        a_2.innerBefore('More...');
+
+        div2_2.innerAfter(h3_2);
+        div2_2.innerAfter(img_2);
+        div2_2.innerAfter(p_2);
+        div2_2.innerAfter(a_2);
+        div.innerBefore(div2_2);
+
+
+        document.write( div.getHtml() );
+    </script>
+</body>
+</html>

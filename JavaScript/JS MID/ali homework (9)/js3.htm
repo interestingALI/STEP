@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #field {
+          width: 800px;
+          height: 540px;
+          background-image: url("img/soccer-field.jpg");
+          border: 5px solid black;
+          position: relative;
+          cursor: pointer;
+        }
+    
+        #ball {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100px;
+          height: 100px;
+          transition: all 1s;
+        }
+      </style>
+</head>
+<body>
+    <div id="field">
+        <img src="img/soccer-ball.png" id="ball">
+    </div>    
+
+    <script>
+        confirm("Создать html-страницу с футбольным полем, которое занимает всю ширину и высоту экрана, и мячом размером 100 на 100 пикселей. Сделать так, чтобы при клике мышкой по полю, мяч плавно перемещался на место клика. Учтите: необходимо, чтобы центр мяча останавливался именно там, где был совершен клик мышкой. Также предусмотрите, чтобы мяч не выходил за границы поля.");
+
+        const field = document.getElementById("field");
+
+        field.onclick = function(event) {
+            let fieldCoords = this.getBoundingClientRect();
+
+            let ballCoords = {
+                top: event.clientY - fieldCoords.top - ball.clientHeight / 2,
+                left: event.clientX - fieldCoords.left - ball.clientWidth / 2
+            }
+
+                //top
+            if (ballCoords.top < 0) ballCoords.top = 0;
+
+                //left
+            if (ballCoords.left < 0) ballCoords.left = 0;
+
+                //right
+            if (ballCoords.left + ball.clientWidth > field.clientWidth) {
+                ballCoords.left = field.clientWidth - ball.clientWidth;
+            }
+
+                //bottom
+            if (ballCoords.top + ball.clientHeight > field.clientHeight) {
+                ballCoords.top = field.clientHeight - ball.clientHeight;
+            }
+
+            ball.style.top = ballCoords.top + 'px';
+            ball.style.left = ballCoords.left + 'px';
+        }
+    </script>
+</body>
+</html>

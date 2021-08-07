@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Yesteryear&display=swap');
+
+.txt-white { color: #FFF }
+
+.container {  max-width: 1110px;  margin: auto;}
+.clearfix::after { content: ""; clear: both; display: table }
+header {
+    background: url('../img/headerbg.jpg') center/cover;
+}
+
+div section a:link
+{
+    color: #d3d4d4 ;
+    text-decoration: none;
+}
+div section a:visited
+{
+    color: #d3d4d4 ;
+    text-decoration: none;
+}
+div section a:hover
+{   
+    color: #d3d4d4 ;
+    text-decoration: none;
+}
+div section a:active
+{
+    color: #d3d4d4 ;
+    text-decoration: none;
+}
+
+header .container { 
+    position: relative;
+    min-height: 100vh;
+}
+header nav, header section {
+    position: absolute;
+}
+header nav {
+    top: 30px;
+    right: 50%;
+    transform: translate(50%, 0);
+}
+header nav ul li { 
+    text-align: center; 
+    padding: 0 25px;
+    font: 1em Poppins;      
+} 
+header section {
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    text-align: center;
+}
+header section p {
+    font: 1.1em/1.8 Poppins;     
+}
+h1 {
+    font: 2em Poppins, sans-serif;
+    text-transform: uppercase;
+}
+h2 {
+    font: 2em Yesteryear, cursive;
+    text-align: center;
+}
+h3 {
+    font: 1em Tahoma;
+    color: #0b0c0d;
+    text-transform: uppercase;
+} 
+h3 span { float: right } 
+hr {
+    width: 108px;
+    border: none;
+    border-bottom: 1px solid;
+}
+main section {
+    padding: 110px 0;
+}
+#story {
+    background: #962323;
+}
+#story img {
+    width: 100%;
+    height: 50vh;
+}
+#story article {
+    text-align: center;
+}
+#recipes {
+    background: #25262a;
+}
+#menu {
+    background: #f3f4f7;
+}
+#menu article {
+    padding: 30px 10px;
+}
+#f1 {
+    background: #25262a;
+    padding: 80px 0;
+}
+#f2 {
+    background: #16171b;
+    padding: 50px 0;
+}
+.foodimg {
+    font-size: 0;
+}
+.foods {
+    display: inline-block;
+    width: 100%;
+}
+.c .fas {
+    padding-right: 15px;
+    color: rgb(199, 69, 69);
+}
+.little { 
+    line-height: 1.2;
+}
+.big { 
+    line-height: 2 ;
+}
+#everythng {
+    text-align: center;
+}
+
+#rstr {
+    margin-bottom: 40px;
+    text-transform: capitalize;
+    font-size: 1.6em;
+    color: #d3d4d4;   
+}
+.hdr {
+    margin-bottom: 20px;
+    font: 1.12em Roboto;
+    color:#d3d4d4;
+}
+.txtbtm {
+    font: 0.8em Roboto;
+    color:#d3d4d4;
+}
+.cntcs {
+    font: bold 0.8em Roboto;
+    color: #d3d4d4;
+}
+.width {
+    width: 255px;
+}
+.a, .b, .c {
+    position: relative;
+    text-align: center;
+    margin-left: 40px ;
+    margin-right: 40px ;
+    margin-bottom: 50px ;
+    display: inline-block;
+    width: 240px;
+}
+.little {
+    line-height: 1.6;
+}
+.big { 
+    line-height: 2.3 ;
+}
+#f2f2 {
+    text-align: center;
+}
+.vrybttm {
+    margin: 30px;
+    font-family: "Roboto";
+    color: #8b8b8d;
+    text-align: center;     
+}
+.vrybttm1 {
+    margin: 70px;
+    font-family: "Roboto";
+    color: #8b8b8d;
+    text-align: center;     
+}
+.fa-facebook-f {
+    margin-left: 30px !important;
+    color: white !important;
+}
+.fas , .fab {
+    padding-top: 20px;
+    margin: 5px;
+    color: gray;
+}
+  
+@media only screen and (min-width: 768px) {
+    header nav { width: 100%; top: 65px; }
+    header nav ul {float: right; }
+    header nav ul li { display: inline-block; }
+    h1 { font-size: 4.5em }
+    h2 { font-size: 3.5em }
+    #story img {
+        width: 42%;
+        height: 400px;
+        float: left;
+    }
+    #story article {
+        float: left;
+        width: 50%;
+        margin: 50px 0 0 8%;
+    }
+    .cols {
+        column-count: 2;
+        column-gap: 10%;
+    }
+    .foodimg {
+        font-size: 0;
+        white-space: nowrap;
+    }
+    .foods {
+        width: 25%;
+        display: inline-block;
+    }
+    #rstr {
+        margin-bottom: 40px;
+        text-transform: capitalize;
+        font-size: 1.6em;
+        color: #d3d4d4;   
+    }
+    .hdr {
+        margin-bottom: 20px;
+        font: 1.12em Roboto;
+        color:#d3d4d4;
+    }
+    .txtbtm {
+        font: 0.8em Roboto;
+        color:#d3d4d4;
+    }
+    .cntcs {
+        font: bold 0.8em Roboto;
+        color: #d3d4d4;
+    }
+    .width {
+        width: 255px;
+    }
+    .a, .b, .c {
+        text-align: center;
+        margin-right: 50px;
+        display: inline-block;
+        width: 240px;
+    }
+    .a {margin-left: 10%; text-align: left ;}
+
+    .c {text-align: left;}
+
+    .little {
+        line-height: 1.6;
+    }
+    .big { 
+        line-height: 2.3 ;
+    }
+    #f2f2 {
+        text-align: center;
+    }
+    .vrybttm {
+        margin: 30px;
+        display: inline;
+        font-family: "Roboto";
+        color: #8b8b8d;
+        text-align: center;     
+    }
+    .vrybttm1 {
+        margin: 70px;
+        display: inline;
+        font-family: "Roboto";
+        color: #8b8b8d;
+        text-align: center;     
+    }
+    .fa-facebook-f {
+        margin-left: 80px !important;
+        color: white !important;
+    }
+    #f2f2 .fas , .fab {
+        margin: 5px;
+        color: gray;
+    }
+}

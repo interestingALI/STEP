@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const kurs = 0.84;
+        let dollars = prompt("How many dollars you need to change?");
+        alert("You will have " + (dollars * kurs) + " euros");
+
+        let size = prompt("How big is your flash drive? (in GB)");
+        alert("Your program with the weight of 820mb will fit " + Math.floor((size*1024)/820) + " time(s)")
+
+        let money = prompt("How much money you have?")
+        let cost = prompt("How much does the chocolate cost?");
+        alert("You can buy " + Math.floor(money/cost) + " chocolate(s), and you will have " + money%cost + " money left.");
+    </script>
+</body>
+</html>

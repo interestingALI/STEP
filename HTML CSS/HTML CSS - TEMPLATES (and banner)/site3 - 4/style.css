@@ -1,0 +1,200 @@
+:root {
+    --zeleniy: #a2ca28;
+    --krasniy: #fd634e;
+}
+.container { max-width: 1180px;  margin: auto; }
+.row::after { content: ""; clear: both; display: table; }
+.center { text-align: center; }
+.right { float: right; } 
+.col { float: left; }
+.col4 { width: 25%; }
+.col1 { width: 33%; }
+.col2 { width: 66%; }
+.h50 { height: 50vh; }
+.padd { padding: 55px 40px; }
+
+.back-zel { background: var(--zeleniy); } 
+.back-krs { background: var(--krasniy); } 
+.back-bel { background: #fff; }
+.back-blk { background: #0d1119;} 
+
+.txt-zel { color: var(--zeleniy); } 
+.txt-krs { color: var(--krasniy); } 
+.txt-bel { color: #fff; } 
+.txt-ser { color: #656e74; } 
+.txt-sil { color: #e3e9ea; } 
+
+header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('img/header.jpg') center/cover;
+}
+header img {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+header ul {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+}
+header ul li {
+    display: inline;
+}
+header ul li a {
+    display: inline-block;
+    margin: 5px 30px;
+    font: 0.8em Tahoma;
+    color: #FFF;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+header div {
+    position: absolute;
+    bottom: 200px;
+    left: 100px;
+}
+#fitnessinacan {
+    font: 2.5em Oswald;
+    text-transform: uppercase;
+    text-align: right;
+    white-space: nowrap;
+}
+h3 {
+    font: 2.2em 'Open Sans';
+    text-transform: uppercase;  
+}
+h5 {
+    font: .9em Oswald;
+    text-transform: uppercase;
+    text-align: right;
+}
+h6 {
+    font: bold .9em Montserrat;
+    text-transform: uppercase;
+}
+
+.art1 {
+    padding: 100px 10px;
+}
+#we {
+    background: url('img/bigideas.jpg') center/cover;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+#welaunch {
+    padding-top: 200px;
+    font-size: 2.8em;
+    font-family: "Open Sans";
+    color: #fff;
+    text-align: center;
+}
+#wlp {
+    margin: auto;
+    margin-top: 35px;
+    width: 500px;
+    font-family: "OpenSans";
+    color: #fff;
+    text-shadow: 1px 1px 10px black;
+    line-height: 1.4;
+    text-align: center;   
+}
+
+
+.sctn {
+    margin: auto;
+    width: 1300px;
+
+}
+.ftrinfo1 {
+    padding-bottom: 50px;
+    margin-bottom: 50px
+    font-size: 0.9em;
+    font-family: "Open Sans";
+    color: #fff;   
+}
+.fab {
+    margin: 5px;
+    font-size: 55px;
+}
+
+.fa-facebook-square { color: rgb(96, 96, 255);}
+.fa-twitter-square { color: lightskyblue;}
+.fa-youtube-square { color: red;}
+.fa-linkedin { color: rgb(102, 70, 161)}
+
+.ftrinfo {
+    margin-top: 70px;
+    font-size: 0.9em;
+    font-family: "Open Sans";
+    color: #fff;   
+}
+.ftrtxt {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 350px;
+    font-size: 0.87em;
+    line-height: 1.5;
+    font-family: "Open Sans";
+    color: #8297a7;
+}
+.la {
+    margin-left: 100px;
+    display: inline-block
+}
+form {
+    padding-bottom: 500px;
+    margin-left: 850px;
+}
+input {
+    margin-top: 10px;
+    border-radius: 3px;
+    height: 50px;
+    font-size: 0.8em;
+}
+#name { width: 200px;}
+#email {width: 330px;}
+#submit {width: 190px; background-color: var(--zeleniy); color: white;}
+
+
+
+
+#fitness { background: url('img/fitness.jpg') center/cover; }
+#body { background: url('img/body.jpg') center/cover;}
+#lifestyle { background: url('img/lifestyle.jpg') center/cover;}
+#summer { background: url('img/summer.jpg') center/cover;}
+#yourself { background: url('img/yourself.jpg') center/cover;}
+#eating { background: url('img/eating.jpg') center/cover;}
+#bigideas { background: url('img/bigideas.jpg') center/cover;}
+
+
+@media only screen and (max-width: 768px) {
+    header ul, header img, header div {
+        left: 50%;
+        transform: translate( -50%, 0);
+    }
+    header ul {
+        top: 150px;
+    }
+    header ul li {
+        display: block;
+        text-align: center;
+    }
+    h1 { font-size: 2em; }
+    h3 { font-size: 1.8em; }
+    .col1, .col2, .col4 { width: 100%; }
+    .art1 { padding: 20px 30px; }
+    #welaunch {padding-top: 80px; font-size: 2em;}
+    #wlp {width: 270px;}
+
+    .sctn {width: 280px; margin:auto}
+    .ftrtxt {width: 200px}
+    form {margin-top: 90px; margin-left: 30px;}
+    .la {margin-left: 10px;}
+    .ftrinfo1 {padding: 10px;}
+    #email {width: 200px;}
+
+}

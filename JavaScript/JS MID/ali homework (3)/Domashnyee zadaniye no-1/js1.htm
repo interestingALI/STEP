@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        confirm("Создать объект, описывающий автомобиль (производитель, модель, год выпуска, средняя скорость), и следующие функции для работы с этим объектом. 1. Функция для вывода на экран информации об автомобиле.");
+
+        let car = {
+            brand: `Toyota`,
+            model: `Supra`,
+            year: 2019,
+            meanSpeed: 180,
+        }
+
+        function showInfo() {
+            alert(`Производитель: ${car.brand}, Модель: ${car.model}, Год выпуска: ${car.year}, Средняя скорость: ${car.meanSpeed}`);
+        }
+        showInfo();
+
+
+        let distance = prompt("Функция для подсчета необходимого времени для преодоления переданного расстояния со средней скоростью. Учтите, что через каждые 4 часа дороги водителю необходимо делать перерыв на 1 час. Расстояние:");
+        alert(timeNeeded());
+        function timeNeeded() {
+            return `${+Math.floor(distance/car.meanSpeed)+ +Math.floor(distance/(car.meanSpeed*4))} час(ов) и ${((+(distance/car.meanSpeed).toFixed(2)-Math.floor(distance/car.meanSpeed))*60).toFixed(0)} минут`;
+        }
+    </script>
+</body>
+</html>

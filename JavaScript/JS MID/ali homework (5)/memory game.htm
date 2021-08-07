@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            table {border-collapse: collapse; margin: 50px auto; }
+            td { width: 100px; height: 100px; border: 1px solid #333; text-align: center; }
+            img { width: 90px}
+        </style>
+    </head>
+    <body>
+        <table id="tbl"></table>
+
+        <script>
+            const tbl = document.getElementById("tbl");
+            let icon = ["bloggr", "digg", "dribbble", "evernote", "facebook", "instagram", "pinterest", "twitter"];
+            let arr = [];
+            let tablica = [];
+            let mask = [];
+            let prev = [];
+
+            for(i = 0; i < 8; i++) {
+                arr.push(i);
+                arr.push(i);
+            }
+
+            for(let i = 0; i < 4; i++){
+                tablica[i] = [];
+                mask[i] = [];
+                for(let j = 0; j < 4; j++){
+                    let indx = rand(0, arr.length - 1);
+                    tablica[i][j] = arr[indx];
+                    mask[i][j] = 1;
+                    arr.splice(indx, 1);
+                }
+            }
+
+            show();
+            setTimeout(shut ,3000);
+
+            function shut(){
+                for(let i = 0; i < 4; i++){
+                    for(let j = 0; j < 4; j++){
+                        mask[i][j] = 0;
+                    }
+                }
+                show();
+            }
+
+            function change(i, j) {
+                mask[i][j] = 1;
+                show();
+                if(prev.length == 0) {
+                    prev[0] = i;
+                    prev[1] = j;
+                } else {
+                    if(tablica[i][j] == tablica[ prev[0] ][ prev[1] ]) prev = [];
+                    else {
+                        setTimeout(function(){
+                            mask[ prev[0] ][ prev[1] ] = 0;
+                            mask[i][j] = 0;
+                            show();
+                            prev = [];
+                        }, 1000);
+                    }
+                }
+            }
+
+            function show() {
+                let kod = "";
+                for(let i = 0; i < 4; i++){
+                    kod += "<tr>";
+                    for(let j = 0; j < 4; j++){
+                        let img = mask[i][j] ? icon[ tablica[i][j] ] : "flickr";
+                        kod += '<td onclick="change(' + i + ', ' + j + ')"><img src="icons/' + img + '.png" /></td>';
+                    }
+                    kod += "</tr>";
+                }
+                tbl.innerHTML = kod;
+
+                setInterval(isEnd,3001);
+            }
+
+      
+            function isEnd() {
+                let count = 0;
+                for(let i = 0; i < 4; i++){
+                    for(let j = 0; j < 4; j++){
+                        if (mask[i][j]==1) {
+                            count++;
+                            if (count==16) {
+                                alert("YOU WON! IT TOOK YOU: "+ Math.floor(performance.now()/1000) + " SECONDS" );
+                            }
+                        }
+                    }
+                }
+                count=0;
+            }
+
+            function rand(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) ) + min;
+            }  
+        </script>
+    </body>
+</html>

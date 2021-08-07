@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            color: blanchedalmond;
+            background-color: black;
+        }
+        div {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #4b4b4b;
+            padding: 50px;
+        }
+        p {
+            width: 28%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p onclick="select(this)">1. On the Origin of Species by Charles Darwin</p>
+        <p onclick="select(this)">2. The Republic by Plato</p>
+        <p onclick="select(this)">3. Don Quixote by Miguel de Cervantes</p>
+        <p onclick="select(this)">4. Das Kapital by Karl Marx</p>
+        <p onclick="select(this)">5. The Great Gatsby by F. Scott Fitzgerald</p>
+        <p onclick="select(this)">6. The Iliad by Homer</p>
+        <p onclick="select(this)">7. Alice's Adventures in Wonderland by Lewis Carroll</p>
+    </div>  
+    <script>
+        confirm("Создать html-страницу со списком книг. При щелчке на книгу, цвет фона должен меняться на оранжевый. Учтите, что при повторном щелчке на другую книгу, предыдущей – необходимо возвращать прежний цвет.");
+
+        let books = document.getElementsByTagName("p");
+
+        function select(book) {
+
+            for (let i = 0; i < books.length; i++) {
+                if (books[i].style.backgroundColor == "orange") {
+                    books[i].style.backgroundColor = "#4b4b4b";
+                    books[i].style.color = "blanchedalmond";
+                }
+            }
+
+            book.style.backgroundColor = "orange";
+            book.style.color = "black";
+        }
+    </script>
+</body>
+</html>

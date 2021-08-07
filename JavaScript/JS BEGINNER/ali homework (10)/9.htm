@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    
+    <p id="table"></p>
+
+    <script>
+        const table = document.getElementById("table");
+        let kod="";
+        for(let f = 2; f <= 9; f++) {
+            kod+= "<br />";
+            for(let s = 1; s <= 10; s++){
+                kod += f + "×" + s + " = " + (f * s) + "<br />";
+            }
+        }
+        table.innerHTML = kod;
+    </script>
+
+</body>
+</html>

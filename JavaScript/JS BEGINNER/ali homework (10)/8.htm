@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<body>
+    
+
+
+    <script>
+        day = ["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"];
+        i = 0
+        next();
+        
+
+        function next() {
+            if (confirm(day[i] + ". Хотите увидеть следующий день?")) {
+                i++;
+                if (i<7) {
+                    next();
+                }
+                else if (i >= 7) {
+                    i=0;
+                    next()
+                }
+            } 
+            else {}
+        }
+
+
+    </script>
+</body>
+</html>

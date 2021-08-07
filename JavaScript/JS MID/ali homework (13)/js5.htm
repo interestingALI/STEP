@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        th, td {
+            border: 1px solid gray;
+            padding: 10px;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Company</th>
+        </tr>
+        <tr>
+            <td>Mark</td>
+            <td>Zuckenberg</td>
+            <td>34</td>
+            <td>Facebook</td>
+        </tr>
+        <tr>
+            <td>Larry</td>
+            <td>Page</td>
+            <td>45</td>
+            <td>Google</td>
+        </tr>
+        <tr>
+            <td>Timothy</td>
+            <td>Cook</td>
+            <td>57</td>
+            <td>Apple</td>
+        </tr>
+        <tr>
+            <td>Bill</td>
+            <td>Gates</td>
+            <td>62</td>
+            <td>Microsoft</td>
+        </tr>
+    </table>
+
+
+
+    <script>
+
+        /*
+        
+            Создать html-страницу с большой таблицей. 
+            При клике по заголовку колонки, необходимо отсортировать 
+            данные по этой колонке. Учтите, что числовые значения должны 
+            сортироваться как числа, а не как строки.
+
+        */
+
+
+        
+        ////// Нашел в интернете ///////
+
+        const table = document.getElementsByTagName("table")[0];
+        let tdValue = (tr, i) =>  tr.children[i].textContent;
+
+        let comparer = (i, asc) => (a, b) =>
+        
+        ( (v1, v2) => !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.localeCompare(v2)  )
+        
+        (  tdValue(asc ? a : b, i), tdValue(asc ? b : a, i)  );
+
+        document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+
+        Array.from( table.querySelectorAll('tr:nth-child(n+2)') )
+            .sort( comparer( Array.from( th.parentNode.children ).indexOf(th), this.asc = !this.asc ) )
+            .forEach(tr => table.appendChild(tr));
+        }))); 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <input id="cislo1" style="width: 50px; text-align: center;"  placeholder="From"></input>
+            <button onclick="first()">Ok</button>
+            <div id="task1" style="display: inline-block;"></div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <input id="cislo2" style="width: 50px; text-align: center;"  placeholder="Every"></input>
+            <button onclick="second()">Ok</button>
+            <div id="task2" style="display: inline-block;"></div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <input id="cislo3" style="width: 50px; text-align: center;" placeholder="To"></input>
+            <input id="cislo3a" style="width: 50px; text-align: center;" placeholder="Every"></input>
+            <button onclick="third()">Ok</button>
+            <div id="task3" style="display: inline-block;"></div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <input id="cislo4" type="text" placeholder="From" />
+            <button onclick="fourth()">Ok</button>
+            <table id="task4" style="border-collapse: collapse; margin: 20px 0;"></table>
+        </div>
+
+        <script>
+            const cislo1 = document.getElementById("cislo1");
+            const task1 = document.getElementById("task1");
+            function first(){
+                let kod1 = "";
+                for(let i = cislo1.value; i >= 1; i--) {
+                    kod1 += `${i} `;
+                }
+                task1.innerHTML = kod1;
+            }
+
+            const cislo2 = document.getElementById("cislo2");
+            const task2 = document.getElementById("task2");
+            function second(){
+                let kod2 = "";
+                for(let i = 1; i <= 100; i = i + +cislo2.value) {
+                    kod2 += `${i} `;
+                }
+                task2.innerHTML = kod2;
+            }
+
+            const cislo3a = document.getElementById("cislo3a");
+            const cislo3 = document.getElementById("cislo3");
+            const task3 = document.getElementById("task3");
+            function third(){
+                let kod3 = "";
+                for(let i = 1; i <= +cislo3.value; i = i + +cislo3a.value) {
+                    kod3 += `${i} `;
+                }
+                task3.innerHTML = kod3;
+            }
+
+            let cislo4 = document.getElementById("cislo4");
+            let task4 = document.getElementById("task4");
+            function fourth(){
+                let kod4 = "<tr>";
+                for(let i = (cislo4.value) ; i >= 1; i--) {
+                    kod4 += `<td style="border: 1px solid red; width: 50px; height: 50px; text-align: center;"> ${i} </td>`;
+                }
+                kod4 += "</tr>";
+                task4.innerHTML = kod4;
+            }
+        </script>
+    </body>
+</html>

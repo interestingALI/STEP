@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+    <script>
+
+        /* 
+        
+            Реализовать класс, описывающий блок html документ. 
+            Класс HtmlBlock должен содержать внутри себя:
+            ■ коллекцию стилей, описанных с помощью класса CssClass;
+            ■ корневой элемент, описанный с помощью класса 
+            HtmlElement;
+            ■ метод getCode(), который возвращает строку с html кодом (сначала теги style с описанием всех классов, а потом 
+            все html содержимое из корневого тега и его вложенных 
+            элементов).
+            С помощью написанных классов реализовать следующий блок 
+            (см. рис. 2) и добавить его на страницу с помощью document.write().
+        
+        */  //??
+
+
+
+        const style = document.getElementsByTagName('style')[0];
+        let stylCollection = "";
+
+        class CssClass {
+            constructor(classs) {
+                this.classs = classs,
+                this.declaration = []
+            }
+                
+            addStyle(style) {
+                this.declaration.push(style)
+            }
+
+            removeStyle(style) {
+                let index = this.declaration.indexOf(style);
+                if (index > -1) {
+                    this.declaration.splice(index, 1);
+                }
+            }
+
+            getCss() {
+            let styles = this.declaration.join('; ')
+            stylCollection += `.${this.classs}{ ${styles} }` //????
+            style.innerHTML+= `.${this.classs}{ ${styles} }`
+            }
+        }
+
+        class HtmlElement {
+            constructor(tagName, selfClsng){
+                this.tagName = tagName,
+                this.selfClsng = selfClsng,
+                this.innerTxt = "",
+                this.arrayAttr = [],
+                this.arrayStyle = [],
+                this.arrayTags = []
+            }
+            addAttribute(attr){
+                this.arrayAttr.push(attr);
+            }
+            addStyle(style){
+                this.arrayStyle.push(style);
+            }
+            innerAfter(elem){
+                if(this.selfClsng) return;
+                else if (typeof elem === 'object') this.arrayTags.push(elem); 
+                    else this.innerTxt = elem;
+            }
+            innerBefore(elem){
+                if(this.selfClsng) return;
+                else if (typeof elem === 'object') this.arrayTags.unshift(elem); 
+                    else this.innerTxt = elem;
+            }
+
+            getHtml() {
+                let attrs = this.arrayAttr.join(" ") + " ";
+                let styles = this.arrayStyle.length > 0 ? 'style="' + this.arrayStyle.join("; ") + '"' : '';
+                let inner = this.arrayTags.map( item => item.getHtml() ).join(" \n ");
+
+                if (this.selfClsng) return '<' + this.tagName + ' ' + attrs + styles + ' />';
+                else return '<' + this.tagName + ' ' + attrs + styles + '>' + this.innerTxt + inner + '</' + this.tagName + '>';
+            }
+        }
+    
+        class HtmlBlock {
+            //?????
+            constructor(name){
+                this.name = name;
+            }
+
+            getCode(){
+                style+= stylCollection;
+                //name.getHtml()
+            }
+        }
+
+        let wrap = new CssClass("wrap");
+        wrap.addStyle("display:flex");
+        wrap.getCss();
+
+        let block = new CssClass("block");
+        block.addStyle("width: 300px");
+        block.addStyle("margin: 10px");
+        block.getCss();
+
+        let imgcss = new CssClass("img");
+        imgcss.addStyle("width: 100%");
+        imgcss.getCss();
+
+        let text = new CssClass("text");
+        text.addStyle("text-align: justify");
+        text.getCss();
+
+
+
+
+
+        let div = new HtmlElement('div', false);
+        div.addAttribute('id="wrapper"');
+        div.addAttribute('class="wrap"');
+
+        // 1 //
+        let div2 = new HtmlElement('div', false);
+        div2.addAttribute('class="block"');
+
+        let h3 = new HtmlElement('h3', false);
+        h3.innerBefore('What is Lorem Ipsum?');
+
+        let img = new HtmlElement('img', true);
+        img.addAttribute('src="lipsum. jpg"');
+        img.addAttribute('alt="Lorem Ipsum"');
+        img.addAttribute('class="img"');
+       
+
+        let p = new HtmlElement('p', false);
+        p.addAttribute('class="text"');
+        p.innerBefore(`“Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.”`);
+
+        let a = new HtmlElement('a', false);
+        a.addAttribute('href="https://mw.lipsum.com/"');
+        a.addAttribute('target="_blank"');
+        a.innerBefore('More...');
+
+        div2.innerAfter(h3);
+        div2.innerAfter(img);
+        div2.innerAfter(p);
+        div2.innerAfter(a);
+        div.innerBefore(div2);
+
+
+
+        // 2 //
+        let div2_2 = new HtmlElement('div', false);
+        div2_2.addAttribute('class="block"');
+
+        let h3_2 = new HtmlElement('h3', false);
+        h3_2.innerBefore('What is Lorem Ipsum?');
+
+        let img_2 = new HtmlElement('img', true);
+        img_2.addAttribute('src="lipsum. jpg"');
+        img_2.addAttribute('alt="Lorem Ipsum"');
+        img_2.addAttribute('class="img"');
+       
+
+        let p_2 = new HtmlElement('p', false);
+        p_2.addAttribute('class="text"');
+        p_2.innerBefore(`“Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.”`);
+
+        let a_2 = new HtmlElement('a', false);
+        a_2.addAttribute('href="https://mw.lipsum.com/"');
+        a_2.addAttribute('target="_blank"');
+        a_2.innerBefore('More...');
+
+        div2_2.innerAfter(h3_2);
+        div2_2.innerAfter(img_2);
+        div2_2.innerAfter(p_2);
+        div2_2.innerAfter(a_2);
+        div.innerAfter(div2_2);
+
+
+        document.write( div.getHtml() );
+    
+    </script>
+</body>
+</html>

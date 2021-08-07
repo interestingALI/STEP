@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            body {font-family: Arial;}
+            table { border-collapse: collapse; margin: 33px; display: inline-block; }
+            td { border: 1px solid black; width: 33px; height: 33px; text-align: center; }
+        </style>
+    </head>
+    <body>
+        <table id="tablica1"></table>
+        <table id="tablica2"></table>
+        <table id="tablica3"></table>
+        <table id="tablica4"></table>
+        <table id="tablica5"></table>
+        <table id="tablica6"></table>
+        <table id="tablica7"></table>
+
+
+                <!-- WRONG -->      
+        <table id="tablica8"></table>
+
+
+        <script>
+            const tablica1 = document.getElementById("tablica1");
+            let kod1 = "";
+            for(let i = 1; i <= 5; i++) {
+                kod1 += "<tr>";
+                for(let j = 1; j <= 5; j++) {
+                    kod1 += "<td>" + ((i + j)%2 ? "1" : "0") + "</td>";
+                }
+                kod1 +="</tr>";
+            }
+            tablica1.innerHTML = kod1;
+
+            const tablica2 = document.getElementById("tablica2");
+            let kod2 = "";
+            let x = 1;
+            for(let i = 1; i <= 5; i++) {
+                kod2 += "<tr>";
+                for(let j = 1; j <= 5; j++) {
+                    kod2 += "<td>" + (x++) + "</td>";
+                }
+                kod2 +="</tr>";
+            }
+            tablica2.innerHTML = kod2;
+
+            const tablica3 = document.getElementById("tablica3");
+            let kod3 = "";
+            for(let i = 1; i <= 5; i++) {
+                kod3 += "<tr>";
+                for(let j = 1; j <= 5; j++) {
+                    kod3 += "<td>" + (i+j-1) + "</td>";
+                }
+                kod3 +="</tr>";
+            }
+            tablica3.innerHTML = kod3;
+
+            const tablica4 = document.getElementById("tablica4");
+            let kod4 = "";
+            for(let i = 1; i <= 5; i++) {
+                kod4 += "<tr>";
+                for(let j = 1; j <= 5; j++) {
+                    kod4 += "<td>" + (j) + "</td>";
+                }
+                kod4 +="</tr>";
+            }
+            tablica4.innerHTML = kod4;
+
+            const tablica5 = document.getElementById("tablica5");
+            let kod5 = "";
+            for(let i = 1; i <= 5; i++) {
+                kod5 += "<tr>";
+                for(let j = 1; j <= 5; j++) {
+                    kod5 += "<td>" + (( j - i ) > 0 ? `` : `${j}`) + "</td>";
+                }
+                kod5 +="</tr>";
+            }
+            tablica5.innerHTML = kod5;
+
+            const tablica6 = document.getElementById("tablica6");
+            let kod6 = "";
+            for(let i = 1; i <= 5; i++) {
+                kod6 += "<tr>";
+                for(let j = 1; j <= 5; j++) {
+                    kod6 += "<td>" + (( j ) %2 ? `${j}` : ``) + "</td>";
+                }
+                kod6 +="</tr>";
+            }
+            tablica6.innerHTML = kod6;
+
+            const tablica7 = document.getElementById("tablica7");
+            let kod7 = "";
+            y = -1;
+            for(let i = 1; i <= 5; i++) {
+                kod7 += "<tr>";
+                for(let j = 1; j <= 5; j++) {
+                    kod7 += "<td>" + (( j - i ) %2 ? `` : `${y+=2}`) + "</td>";
+                }
+                kod7 +="</tr>";
+            }
+            tablica7.innerHTML = kod7;
+
+            //WRONG
+            const tablica8 = document.getElementById("tablica8");
+            let kod8 = "";
+            y = -1;
+            for(let i = 1; i <= 8; i++) {
+                kod8 += "<tr>";
+                for(let j = 1; j <= 8; j++) {
+                    kod8 += "<td>" + ( ( j ) ? `` : `${j}`) + "</td>";
+                }
+                kod8 +="</tr>";
+            }
+            tablica8.innerHTML = kod8;
+        </script>
+    </body>
+</html>

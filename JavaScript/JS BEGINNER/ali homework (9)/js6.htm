@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="usd" placeholder="USD"/>
+        <select id="curr">
+            <option>AZN</option>
+            <option>EURO</option>
+            <option>UAH</option>
+        </select>
+        <button onclick="ok()">OK</button>
+        <span id="result"></span>
+    <script>
+        const usd = document.getElementById("usd");
+        const curr = document.getElementById("curr");
+        const result = document.getElementById("result");
+        let kazn = 1.7;
+        let keuro = 0.84;
+        let kuah = 27.77;
+            
+        function ok() {
+           if (curr.value == "AZN") {
+               result.innerHTML = usd.value*kazn;
+           }
+           else if (curr.value == "EURO") {
+               result.innerHTML = usd.value*keuro;
+           }
+           else if (curr.value == "UAH") {
+               result.innerHTML = usd.value*kuah;
+           }                
+        }
+    </script>    
+</body>
+</html>

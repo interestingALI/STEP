@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //1 Напишите функцию camelize(str), 
+    // которая преобразует строки вида «my-short-string» в «myShortString».
+    alert(camelize(prompt("Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».")));
+    function camelize(str) {
+
+        return str.split("-").map( (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1) ).join("");
+    }
+
+
+    //2 Hапишите функцию filterRange(arr, a, b), которая принимает массив arr,
+    // ищет в нём элементы между a и b и отдаёт массив этих элементов.
+    let arr = [5, 3, 8, 1];
+    let filtered = filterRange(arr, 0, 4);
+
+    function filterRange(arr, a, b) {
+        let big = a > b ? a : b;
+        let small = a > b ? b : a;
+          
+        return arr.filter(item => item > small && item < big );
+    }
+    
+
+    //3 Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него
+    //все значения кроме тех, которые находятся между a и b. То есть, проверка имеет вид a ≤ arr[i] ≤ b.
+    //Функция должна изменять принимаемый массив и ничего не возвращать.
+    let arr3 = [5, 3, 8, 1];
+    filterRangeInPlace(arr3, 1, 4); // удалены числа вне диапазона 1..4
+
+    function filterRangeInPlace(arr, a, b) {
+        let big = a > b ? a : b;
+        let small = a > b ? b : a;
+
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] > small || arr[i]< big ? arr.splice(i, 1) : "";
+        }
+    }
+    alert( arr3 ); // [3, 1]
+
+
+    //4 Сортировать в порядке по убыванию
+    let arr4 = [5, 2, 1, -10, 8];
+    arr4.sort();
+    arr4.reverse();
+
+    alert( arr4 ); // 8, 5, 2, 1, -10
+
+    
+    //5 Скопировать и отсортировать массив
+    let arr5 = ["HTML", "JavaScript", "CSS"];
+    let sorted = copySorted(arr5);
+
+    function copySorted(arr) {
+        arrCopy = arr.map((x) => x);
+        return arrCopy.sort();
+    }
+
+    alert( sorted ); // CSS, HTML, JavaScript
+    alert( arr5 ); // HTML, JavaScript, CSS (без изменений)
+
+
+    //6 У вас есть массив объектов user, и в каждом из них есть user.name. 
+    //Напишите код, который преобразует их в массив имён.
+    let vasya = { name: "Вася", age: 25 };
+    let petya = { name: "Петя", age: 30 };
+    let masha = { name: "Маша", age: 28 };
+
+    let users = [ vasya, petya, masha ];
+
+    let names = users.map(item => item.name);
+
+    alert( names ); // Вася, Петя, Маша
+
+
+
+    //7 У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
+    //Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где 
+    //fullName – состоит из name и surname.
+
+    let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+    let petya = { name: "Петя", surname: "Иванов", id: 2 };
+    let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+    let users = [ vasya, petya, masha ];
+
+    let usersMapped = users.map //????
+
+    /*
+    usersMapped = [
+        { fullName: "Вася Пупкин", id: 1 },
+        { fullName: "Петя Иванов", id: 2 },
+        { fullName: "Маша Петрова", id: 3 }
+    ]
+    */
+
+    alert( usersMapped[0].id ) // 1
+    alert( usersMapped[0].fullName ) // Вася Пупкин
+
+
+    //8 Напишите функцию sortByAge(users), которая принимает массив объектов со 
+    //свойством age и сортирует их по нему.
+
+    let vasya = { name: "Вася", age: 25 };
+    let petya = { name: "Петя", age: 30 };
+    let masha = { name: "Маша", age: 28 };
+
+    let arr = [ vasya, petya, masha ];
+
+    function sortByAge(arr) {
+        arr.sort((a, b) => a.age > b.age ? 1 : -1);
+    }
+
+
+    sortByAge(arr);
+
+    // теперь: [vasya, masha, petya]
+    alert(arr[0].name); // Вася
+    alert(arr[1].name); // Маша
+    alert(arr[2].name); // Петя
+
+    
+    </script>
+</body>
+</html>

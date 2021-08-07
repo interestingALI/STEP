@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <ul>
+            <li>Samir Valyev</li>
+            <li>Aida Huseynzade</li>
+            <li>Murad Gunes</li>
+            <li>Jale İsmaylova</li>
+            <li>Ali Mamedzade</li>
+            <li>İrada Mamedova</li>
+            <li>Ulker Abbasova</li>
+        </ul>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(() => {
+                $("li")
+                    .css({ "font": ".9em Tahoma", "width": "150px"})
+                    .mouseenter(function() {
+                        this.style.background!="red"? $(this).css({
+                            background: "orange",
+                            color: "white"
+                        }):"";
+                    })
+                    .mouseleave(function(){
+                        this.style.background!="red"? $(this).css({
+                            background: "none",
+                            color: "black"
+                        }):"";
+                    })
+                    .click(function(){
+                        this.style.background=="red"? $(this).css({
+                            background: "none",
+                            color: "black"
+                        }) :
+                        $(this).css({
+                            background: "red",
+                            color: "white"
+                        });
+                    });
+            });
+        </script>
+    </body>
+</html>

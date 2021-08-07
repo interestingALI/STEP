@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ///// 6 /////
+
+        let bigStrs = "";
+        let str = [prompt("Hаписать функцию, которая принимает любое количество строк, объединяет их в одну длинную строку и возвращает ее. ( Будет вызываться prompt() пока в окне что-то написано )")];
+        alert( bigStr() );
+        function bigStr() {
+            if (str[str.length-1] != "") {
+                str[str.length] = prompt("( Будет вызываться prompt() пока в окне что-то написано )");
+                bigStr();
+            }
+            else {
+                for (let i = 0; i < str.length; i++) {
+                    
+                    bigStrs += str[i];
+                    
+                }
+            }
+            return bigStrs;
+        }
+        
+        ///// 7 /////
+
+        let primer = prompt("Написать функцию – калькулятор. Функция принимает строку с примером, определяет, какое действие необходимо выполнить (+ - * /), переводит операнды в числа, решает пример и возвращает результат.");
+        alert( calc(primer) );
+        function calc(str) {
+            return eval(str);
+        }
+
+        ///// 8 /////
+
+        let link = prompt("Написать функцию, которая получает url и выводит подробную информацию о нем. Например: url “https://itstep.org/ua/about”, информация “протокол: https, домен: itstep.org, путь: /ua/about”.");
+        alert(infoLink(link));
+    
+        function infoLink(link) {
+            
+            let protocol = link.split(":")[0];
+            let domen = link.split("/")[2];
+
+            let source = link.replace(protocol + "://" + domen, '');
+
+            return `протокол: ${protocol}, домен: ${domen}, путь: ${source}.`;
+        
+            console.log(protocol)
+        }
+
+        ///// 9 /////
+
+        let str2 = prompt("Написать функцию, которая принимает строку и разделитель и возвращает массив подстрок, разбитых с помощью указанного разделителя. Например: строка “10/08/2020”, разделитель “/”, результат: “10”, “08”, “2020”. Выполняя задание, не используйте функцию split(). Строка:");
+        let razdeltl = prompt("Pазделитель:")
+
+        alert( splitstr(str2) );
+        function splitstr(str)  {
+
+            let result = [];
+            let temp = "";
+            for(let i = 0; i< str.length; i++) {
+                if(str[i] != razdeltl){
+                    temp += str[i];
+                } else {
+                    result.push(temp);
+                    temp = "";
+                }
+            }
+            return result;
+        }
+
+        ///// 10 /////
+
+        confirm("Написать функцию вывода текста по заданному шаблону. Функция принимает первым параметром шаблон, в тексте которого может использоваться %, после символа % указывается индекс входного параметра. При выводе вместо %индекс необходимо вывести значение соответствующего входного параметра. Например: print(“Today is %1 %2.%3.%4”, “Monday”, 10, 8, 2020) должна вывести “Today is Monday 10.8.2020”.             Вы должны будете передать 5 аргументов");
+        let template = prompt("Template ( example: “Today is %1 %2.%3.%4” )");
+        let weekDay = prompt("Week Day ( “Monday” )");
+        let day = prompt("Day ( 10 )");
+        let month = prompt("Month ( 8 )");
+        let year = prompt(" Year (2020) ");
+
+        alert( someFunc(template, weekDay, day, month, year) );
+
+        function someFunc(template, weekDay, day, month, year) {
+            
+            let templArr = template.split("%");
+
+            return templArr[0] + weekDay + templArr[1][1] + day + templArr[2][1] + month + templArr[3][1] + year;
+        }
+    </script>
+</body>
+</html>

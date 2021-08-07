@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+    let diap = prompt("Написать функцию, которая выводит все четные или нечетные числа, в указанном пользователем диапазоне. Какие числа выводить, определяется третьим параметром типа bool (true – четные, false – нечетные). ( Разделяйте начало и конец диапазона с помощью пробела )");
+    let arr = diap.split(" ");
+    chetniy = true;
+    neChetniy = false;
+    let chet = "";
+    let nechet = "";
+    for (let i = arr[0]; i <= arr[1]; i++) {
+        if (i%2==neChetniy) nechet+= i + " ";
+        if (i%2==chetniy ) chet+= i + " ";
+    }
+    alert(`Четные: ${nechet}        Нечетные: ${chet}`)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: arial;
+            background-color: #005e00;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <p>Создать массив «Список покупок». Каждый элемент массива является объектом, который содержит название продукта, необходимое количество и куплен или нет. Написать несколько функций для работы с таким массивом</p>
+    <button onclick="show(shopngList)">Вывод всего списка на экран таким образом, чтобы сначала шли некупленные продукты, а потом – купленные.</button>
+    <p id="result"></p>
+
+
+    <input type="text" id="product" placeholder=" Добавление продукта">
+    <button onclick="addToList(product, shopngList)">Добавить</button>
+
+    <input type="text" id="productToBuy" placeholder="Покупка продукта">
+    <button onclick="buy(productToBuy, shopngList)">Купить</button>
+
+    <script>
+        const result = document.getElementById("result");
+        const product = document.getElementById("product");
+        const productToBuy = document.getElementById("productToBuy");
+
+        let milk = {name: "Milla 1L Milk", count: 2, bought: false,};
+        let chocolate = {name: "Snickers 40g Chocolate", count: 3, bought: true,};
+        let water = {name: "Sirab 500ml Water", count: 1, bought: true,};
+        let ketchup = {name: "Calve 250g Ketchup", count: 1, bought: false,};
+        
+        let shopngList = [milk, chocolate, water, ketchup];
+
+        //1
+        function show(products) {
+            let temp = "";
+            let list = "<ul>";
+
+            for (let i = 0; i < products.length; i++) {
+                if (!products[i].bought) {
+                    list += "<li>" + products[i].name + `(${products[i].count})` + "</li>"; 
+                }
+                else temp += "<li>" + products[i].name + `(${products[i].count})` + "</li>";
+            }
+            result.innerHTML = list + temp + "</ul>";
+        }
+
+        //2
+        function addToList(product, list) {
+            let count = 0;
+            for (let p = 0; p < list.length; p++) {
+                if (list[p].name == product.value) {
+                    list[p].count += 1;
+                }
+                else {
+                    count++;
+                }
+            }
+            if (count == list.length) {
+                let newProduct = "";
+                let newProductName = product.value;
+                newProduct = {name: newProductName, count: 1, bought: false};
+                list.push(newProduct);
+            }
+        }
+
+        //3
+        function buy(productToBuy, list) {
+            for (let p = 0; p < list.length; p++) {
+                if (list[p].name == productToBuy.value) {
+                    list[p].bought = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

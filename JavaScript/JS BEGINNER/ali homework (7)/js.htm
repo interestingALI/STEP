@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JS</title>
+        <style>
+            body {
+                background-color: black;
+                color: white;
+				font-family: arial;
+            }
+            select {
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <select onchange="make()" id="seasons">
+            <option>Winter</option>
+            <option>Spring</option>
+            <option>Summer</option>
+            <option>Autumn</option>
+        </select>
+
+        <select onchange="writte()" id="months" ></select>
+
+        <p id="result"></p>
+
+        <script>
+            const seasons = document.getElementById("seasons");
+            const months = document.getElementById("months");
+            const result = document.getElementById("result");
+            make();
+            
+
+            function make() { 
+                if (seasons.selectedIndex == 0) months.innerHTML = "<option>December</option> <option>January</option> <option>February</option>"
+                else if (seasons.selectedIndex == 1) months.innerHTML = "<option>March</option> <option>April</option> <option>May</option>"   
+                else if (seasons.selectedIndex == 2) months.innerHTML = "<option>June</option> <option>July</option> <option>August</option>"
+                else if (seasons.selectedIndex == 3) months.innerHTML = "<option>September</option> <option>October</option> <option>November</option>"
+                
+                let a = seasons.options[seasons.selectedIndex].text;
+                let b = months.options[months.selectedIndex].text;
+                result.innerHTML = b + " is selected ( "  +  a  +  " )" 
+            
+            }
+
+            function writte() {
+                
+                let a = seasons.options[seasons.selectedIndex].text;
+                let b = months.options[months.selectedIndex].text;
+                result.innerHTML = b + " is selected ( "  +  a  +  " )" 
+            
+            }
+            
+        </script>
+    </body>
+</html>

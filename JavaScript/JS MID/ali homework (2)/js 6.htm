@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        let num = prompt("Написать функцию, которая возвращает число Фибоначчи по переданному порядковому номеру. Числа Фибоначчи: 1, 1, 2, 3, 5, 8, 13… Ряд основывается на том, что каждое число равно сумме двух предыдущих чисел. Например: порядковый номер 3 – число 2, порядковый номер 6 – число 8")
+        let fib=[1,1]
+		createFib()
+		
+		function createFib() {
+
+            /*
+			for (let i = 2; i < num; i++) {
+				fib.push(fib[i-2]+fib[i-1])
+			}
+            */
+
+            if (num==fib.length) {
+                return fib[fib.length-1]
+            }
+            else {
+                fib.push( fib[fib.length-2]+fib[fib.length-1] )
+                createFib()
+            }
+
+
+
+		}
+        //alert(fib[num-1])
+        alert(createFib())
+    </script>
+</body>
+</html>

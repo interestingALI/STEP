@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js2</title>
+</head>
+<body>
+
+    <span id="checks"></span>
+    <button id="btn">OK</button><br/>
+    <table id="tbl"></table>
+
+    <script>
+        
+        let checks = document.getElementById("checks");
+        let tbl = document.getElementById("tbl");
+        let kod = ""
+        let color = []
+
+        for(i = 0; i < 8; i++) {
+            kod += '<input type="checkbox" />';
+        }
+        checks.innerHTML = kod;
+
+        btn.onclick = function() {
+            let kod2 = "<tr>"
+            let chck = document.querySelectorAll('[type="checkbox"]');
+
+            for(let i = 0; i < chck.length; i++){
+                color[i] = chck[i].checked ? "red" : "";
+
+                kod2 += `<td style="border: 1px solid blue; width: 15px; height: 15px; background-color: ${color[i]} ;"></td>`;
+            }
+            kod2 += "</tr>";
+            tbl.innerHTML = kod2;
+        }
+    </script>
+</body>
+</html>

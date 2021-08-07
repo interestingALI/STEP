@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        let num = prompt("Написать функцию, которая проверяет, является ли переданное ей число простым. Число:");
+        let count = 0
+        for (let i = 1; i <= num; i++) {
+            if (num%i==0) {
+                count++
+            }
+        }
+        count<=2? alert("Число простое") : alert("Число НЕ простое")
+    </script>
+</body>
+</html>

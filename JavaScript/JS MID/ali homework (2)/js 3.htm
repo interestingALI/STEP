@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+    let num = prompt("Написать функцию для поиска максимальной цифры в числе. Число:");
+    let arr = num.split("");
+
+    let largest = arr[0];
+    let a = 1;
+	
+	findBigst();
+
+	function findBigst() {
+		for (i=1; i<arr.length;i++){
+			if (+arr[i]>largest) {
+				largest= arr[i];
+			}
+		}
+
+    /*
+        if (largest<arr[a] && a<arr.length-1) {
+            largest = arr[a];
+            a+1;
+            findBigst();
+        }
+        else if(a<arr.length && a<arr.length-1) {
+            a+1;
+            findBigst(); 
+        }
+    */
+     
+	} 
+    
+
+    alert(largest);
+
+    </script>
+</body>
+</html>

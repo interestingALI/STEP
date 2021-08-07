@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: arial;
+            background-color: #b57500;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <p>Cоздать массив, описывающий чек в магазине. Каждый элемент массива состоит из названия товара, количества и цены за единицу товара.</p>
+    <button onclick="show(receipt)">Распечатка чека на экран.</button>
+    <p id="result1"></p>
+    <button onclick="result2.innerHTML = sum(receipt) + ` Manats`">Подсчет общей суммы покупки.</button>
+    <p id="result2"></p>
+    <button onclick="mostExpensive(receipt)">Получение самой дорогой покупки в чеке.</button>
+    <p id="result3"></p>
+    <button onclick="meanPrice(receipt)">Подсчет средней стоимости одного товара в чеке. </button>
+    <p id="result4"></p>
+
+    <script>
+        const result1 = document.getElementById("result1");
+        const result2 = document.getElementById("result2");
+        const result3 = document.getElementById("result3");
+        const result4 = document.getElementById("result4");
+
+        let milk = {name: "Prostokvashino 1L Milk", count: 1, price: 1.6};
+        let banana = {name: "Banana Ethiopan treasure", count: 2, price: 0.6};
+        let apple = {name: "Apple Regular Red", count: 1, price: 0.4};
+        let car = {name: "Hyundai Sonata 2008", count: 3, price: 6500};
+
+        let receipt = [milk, banana, apple, car];
+        
+        function show(receipt) {
+            let list = "<ul>";
+            for (let p = 0; p < receipt.length; p++) {
+                list += "<li>" + receipt[p].name + `(${receipt[p].count})` + "</li>"; 
+            }
+            result1.innerHTML = list + "</ul>";
+        }
+
+        function sum(receipt) {
+            return receipt.reduce((sum, current) => sum + current.price*current.count, 0);
+        }
+    
+        function mostExpensive(receipt) {
+            let expensivePrice = receipt.reduce((highest, current) => highest<current.price? highest=current.price : "" , 0);
+            let product = receipt.find(item => item.price == expensivePrice);
+            result3.innerHTML = product.name;
+        }
+    
+        function meanPrice(receipt) {
+            result4.innerHTML = +sum(receipt)/ +receipt.length-1;
+        }
+    </script>
+</body>
+</html>

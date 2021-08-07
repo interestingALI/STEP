@@ -1,0 +1,20 @@
+img {
+    background: #fff;
+    margin: 5px 10px 0 0;
+    box-shadow: 2px 2px 10px #000;
+    float: right;
+    width: 500px;
+}
+h2 {
+	font: small-caps 700 2.2em Arial, Helvetica, sans-serif;
+    color: #000;
+    text-align: center;
+}
+li {
+    list-style: square;
+}
+h3 {
+    font: italic small-caps Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}

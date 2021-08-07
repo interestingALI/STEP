@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        let aud1 = {name: "A1", seats: rand(10, 20), faculty: "Javascript"};
+        let aud2 = {name: "A2", seats: rand(10, 20), faculty: "Javascript"};
+        let aud3 = {name: "B1", seats: rand(10, 20), faculty: "Phyton"};
+        let aud4 = {name: "B2", seats: rand(10, 20), faculty: "Phyton"};
+        let aud5 = {name: "C1", seats: rand(10, 20), faculty: "Design"};
+        let aud6 = {name: "C2", seats: rand(10, 20), faculty: "Design"};
+        let auditoriums = [aud1,aud2,aud3,aud4,aud5,aud6];
+
+
+        alert("Cоздать массив аудиторий академии. Объект-аудитория состоит из названия, количества посадочных мест (от 10 до 20) и названия факультета, для которого она предназначена.   1. Вывод на экран всех аудиторий.");
+        show(auditoriums);
+        function show(aud) {
+            alert(aud.reduce((all, current) => all + current.name + ", ", ""));
+        }
+
+
+        let selectedFaculty = prompt("Вывод на экран аудиторий для указанного факультета. (Javascript; Phyton; Design)");
+        findFittingAudForF(selectedFaculty, auditoriums);
+        function findFittingAudForF(sfaculty, aud) {
+            let fittingFaculties = aud.reduce((all, current) => current.faculty.toLowerCase() == sfaculty.toLowerCase()? all+= " " + current.name : all+= "" , "");
+            alert(fittingFaculties);
+        }
+
+
+        let groupNum = prompt("Вывод на экран только тех аудиторий, которые подходят для переданной группы. Объект-группа состоит из названия, количества студентов и названия факультета. Введите количество студентов:");
+        let groupFaculName = prompt("Название факультета:");
+        findFittingAudForG(groupFaculName, groupNum, auditoriums);
+        function findFittingAudForG(sfaculty, sNum, aud) {
+            let fittingFaculties = aud.reduce((all, current) => current.faculty.toLowerCase() == sfaculty.toLowerCase() && sNum < current.seats? all+= " " + current.name : all+= "" , "");
+            alert(fittingFaculties);
+        }
+
+
+        alert("Функция сортировки аудиторий по количеству мест.");
+        sortAudsBySeat(auditoriums);
+        function sortAudsBySeat(auds) {
+            auds.sort((a, b) => (a.seats > b.seats) ? 1 : -1);
+        }
+        show(auditoriums);
+            
+
+        alert("Функция сортировки аудиторий по названию (по алфавиту).");
+        sortAudsByName(auditoriums);
+        function sortAudsByName(auds) {
+            auds.sort((a, b) => (a.name> b.name) ? 1 : -1);
+        }
+        show(auditoriums);
+
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+    </script>
+</body>
+</html>
