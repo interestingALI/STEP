@@ -1,92 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-        <style>
-            body {
-                background-color: black;
-            }
-            #game { 
-                width: 800px; 
-                height: 600px;
-                margin: 50px auto;
-                box-shadow: 0 0 10px white;
-                position: relative;
-                background-color: black;
-            }
-            #ball {
-                width: 40px;
-                height: 40px;
-                background: radial-gradient(closest-side at 30% 30%, white, red);
-                border-radius: 20px;
-                position: absolute;
-            }
-            #bar {
-                width: 100px;
-                height: 10px;
-                background: gray;
-                position: absolute;
-                bottom: 10px;
-            }
-            #score {
-                font: 20px impact;
-                color: gray;
-                margin-left: 660px;
-                padding-top: 5px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="game">
-            <div id="ball"></div>
-            <div id="bar"></div>
-            <div id="score"></div>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS GAME MVC</title>
+</head>
+<body>
+    <div id="game"></div>
 
-        <script>
-            let score = document.getElementById("score")
-            let ball = document.getElementById("ball");
-            let bar = document.getElementById("bar");
-            let scoren = 0;
-            let x = 0;
-            let y = 0;
-            let dx = 5;
-            let dy = 5;
-            let barX = 0;
-            let start = setInterval(ballMove, 40);
-
-            document.onkeydown = function(e) {
-                if(e.keyCode == 37 && barX > 0) barX -= 20;
-                if(e.keyCode == 39 && barX < 700) barX += 20;
-                bar.style.left = barX + "px";
+    <script>
+        let game = {
+            width: 800,
+            height: 600,
+            color: "white",
+            show: function () {
+                this.elem = document.getElementById("game");
+                this.elem.style.width =  this.width + "px";
+                this.elem.style.height =  this.height + "px";
+                this.elem.style.background = this.color;
+                this.elem.style.margin = "auto";
+                this.elem.style.boxShadow = "0 0 10px gray";
+                this.elem.style.position = "relative";
             }
-
-            function ballMove() {
-                if(x < 0 || x >= 760) dx *= -1;
-                if(y < 0 || y > 540 && x > barX - 20 && x < barX + 80) dy *= -1;
-                if (y > 560) gameOver();
-                x += dx;
-                y += dy;
-                ball.style.left = x + "px";
-                ball.style.top = y + "px";
-                score.innerHTML = "Score: " + scoren;
-
-
-                //            SCORE + SPEED
-                if(y > 540 && x > barX - 20 && x < barX + 80 && y < 550) {
-                    scoren++;
-                    score.innerHTML = "Score: " + scoren;
-
-                    dx = dx*1.2;
-                    dy = dy*1.2;
-                }                                   //
+        }
+        let ball = {
+            radius: 20,
+            color: "red",
+            x: 0,
+            y: 0,
+            dx: 5,
+            dy: 5,
+            create: function () {
+                game.elem.innerHTML += '<div id="ball"></div>';
+            },
+            show: function(){
+                this.width = 2 * this.radius,
+                this.height = 2 * this.radius,
+                this.elem = document.getElementById("ball");
+                this.elem.style.width = this.width + "px"
+                this.elem.style.height = this.height + "px"
+                this.elem.style.background = "radial-gradient(closest-side at 30% 30%, white, " + this.color + ")";
+                this.elem.style.borderRadius = this.width / 2 + "px";
+                this.elem.style.position = "absolute";
+                this.elem.style.left = this.x + "px";
+                this.elem.style.top = this.y + "px";
+            },
+            move: function () {
+                if(ball.x < 0 || ball.x >= game.width - ball.width) ball.dx *= -1;
+                if(ball.y < 0 || ball.y >= bar.y - ball.height && collision()) ball.dy *= -1;
+                if(ball.y >= game.height - ball.height) gameOver();
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+                ball.show();
             }
-
-            function gameOver() {
-                clearInterval(start);
-                alert("GAME OVER !");
+        }
+        let bar = {
+            width: 150,
+            height: 10,
+            color: "blue",
+            x: 0,
+            dx: 10,
+            create: function () {
+                game.elem.innerHTML += '<div id="bar"></div>';
+            },
+            show: function () {
+                this.y = game.height - this.height - 10;
+                this.elem = document.getElementById("bar");
+                this.elem.style.width = this.width + "px";
+                this.elem.style.height = this.height + "px";
+                this.elem.style.background = this.color;
+                this.elem.style.position = "absolute";
+                this.elem.style.left = this.x + "px";
+                this.elem.style.top = this.y + "px";
+            },
+            move: function (code) {
+                if(code == 37 && bar.x > 0) bar.x -= bar.dx;
+                if(code == 39 && bar.x < game.width - bar.width) bar.x += bar.dx;
+                bar.show();
             }
-        </script>
-    </body>
+        }
+
+        init();
+        game.show();
+        ball.create();
+        bar.create();
+        bar.show();
+
+        let start = setInterval(ball.move, 40);
+
+        document.onkeydown = function (e) { bar.move(e.keyCode) };
+
+        function collision() {
+            return (ball.x > bar.x - ball.radius && ball.x < bar.x + bar.width - ball.radius);
+        }
+
+        function gameOver() {
+            clearInterval(start);
+            game.elem.style.background = "#000";
+            alert("GAME OVER !!!");
+        }
+
+        function init() {
+            let body = document.getElementsByTagName("body")[0];
+            body.style.height = "100vh";
+            body.style.margin = "0";
+            body.style = "flex";
+        }
+    </script>
+</body>
 </html>
