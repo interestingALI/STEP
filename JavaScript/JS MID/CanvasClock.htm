@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="400" height="400" style="background:#333"></canvas>
+        <script>
+            let canvas = document.getElementById("canvas");
+            let clock = canvas.getContext("2d");
+            let r = canvas.width / 2;
+            clock.translate(r, r);
+            r *= .9;
+            setInterval(drawClock, 1000);
+
+            function drawClock() {
+                drowFace();
+                drawNumbers();
+                drawTime();
+            }
+
+            function drawTime() {
+                let now = new Date();
+                let hour = now.getHours() % 12;
+                let minute = now.getMinutes();
+                let second = now.getSeconds();
+
+                hour = hour * Math.PI / 6 + minute * Math.PI / (6 * 60) + second * Math.PI / (360 * 60);
+                drawHand(hour, .5 * r, .07 * r);
+
+                minute = minute * Math.PI / 30 + second * Math.PI/(30 * 60);
+                drawHand(minute, .8 * r, .07 * r);
+
+                second = second * Math.PI / 30;
+                drawHand(second, .9 * r, .02 * r);
+            }
+
+            function drawHand(ang, length, width) { 
+                clock.beginPath();
+                clock.lineWidth = width;
+                clock.lineCap = "round";
+                clock.moveTo(0,0);
+                clock.rotate(ang);
+                clock.lineTo(0, -length);
+                clock.stroke();
+                clock.rotate(-ang);
+            }
+
+            function drawNumbers() {
+                clock.font = .15 * r + "px Arial";
+                clock.textBaseline = "middle";
+                clock.textAlign = "center";
+                for(let num = 1; num <= 12; num++){
+                    let ang = num * Math.PI / 6;
+                    clock.rotate(ang);
+                    clock.translate(0, -.85 * r);
+                    clock.rotate(-ang);
+                    clock.fillText(num, 0, 0);
+                    clock.rotate(ang);
+                    clock.translate(0, .85 * r);
+                    clock.rotate(-ang);
+                }
+            }
+
+            function drowFace() {
+                let grad = clock.createRadialGradient(0, 0 , .95 * r, 0, 0, 1.05 * r);
+                grad.addColorStop(0, '#333');
+                grad.addColorStop(.5, '#fff');
+                grad.addColorStop(1, '#333');
+
+                clock.beginPath();
+                clock.arc(0, 0, r, 0 , 2 * Math.PI);
+                clock.fillStyle = "#fff";
+                clock.fill();
+                clock.lineWidth = .1 * r;
+                clock.strokeStyle = grad;
+                clock.stroke();
+
+                clock.beginPath();
+                clock.arc(0, 0, .1 * r, 0, 2 * Math.PI);
+                clock.fillStyle = '#333';
+                clock.fill();
+            }
+        </script>
+    </body>
+</html>
