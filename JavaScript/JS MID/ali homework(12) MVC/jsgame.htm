@@ -9,103 +9,189 @@
     <div id="game"></div>
 
     <script>
-        let game = {
-            width: 800,
-            height: 600,
-            color: "white",
-            show: function () {
-                this.elem = document.getElementById("game");
-                this.elem.style.width =  this.width + "px";
-                this.elem.style.height =  this.height + "px";
-                this.elem.style.background = this.color;
-                this.elem.style.margin = "auto";
-                this.elem.style.boxShadow = "0 0 10px gray";
-                this.elem.style.position = "relative";
+        /* ----------- VIEW beginning --------- */
+        let view = {
+            styleBody: function() {
+                console.log("lolka")
+                let body = document.getElementsByTagName("body")[0];
+                body.style.height = "100vh";
+                body.style.margin = "0";
+                body.style = "flex";
+                body.style.background = "black";
+            },
+
+            game: {
+                width: 800,
+                height: 600,
+                color: "black",
+                show: function () {
+                    this.elem = document.getElementById("game");
+                    this.elem.style.width =  this.width + "px";
+                    this.elem.style.height =  this.height + "px";
+                    this.elem.style.background = this.color;
+                    this.elem.style.margin = "auto";
+                    this.elem.style.boxShadow = "0 0 10px white";
+                    this.elem.style.position = "relative";
+                    this.elem.style.marginTop = "7%"
+                }
+            },
+
+            scoreTxt: {
+                font: "20px impact",
+                color: "lightgray",
+                create: function () {
+                    game.innerHTML += '<span id="score"></span>'
+                },
+                show: function () {
+                    this.elem = document.getElementById("score");
+                    this.elem.style.font = this.font;
+                    this.elem.style.color = this.color;
+                    this.elem.style.paddingLeft = "80%";
+                }
+            },
+
+            ball: {
+                radius: 20,
+                color: "red",
+                x: 0,
+                y: 0,
+                dx: 5,
+                dy: 5,
+                create: function () {
+                    game.innerHTML += '<div id="ball"></div>';
+                },
+                show: function(){
+                    this.width = 2 * this.radius,
+                    this.height = 2 * this.radius,
+                    this.elem = document.getElementById("ball");
+                    this.elem.style.width = this.width + "px"
+                    this.elem.style.height = this.height + "px"
+                    this.elem.style.background = "radial-gradient(closest-side at 30% 30%, white, " + this.color + ")";
+                    this.elem.style.borderRadius = this.width / 2 + "px";
+                    this.elem.style.border = "1px black solid";
+                    this.elem.style.position = "absolute";
+                    this.elem.style.left = this.x + "px";
+                    this.elem.style.top = this.y + "px";
+                }
+                
+            },
+            bar: {
+                width: 150,
+                height: 10,
+                color: "red",
+                x: 0,
+                dx: 10,
+                create: function () {
+                    game.innerHTML += '<div id="bar"></div>';
+                },
+                show: function () {
+                    this.y = view.game.height - this.height - 10;
+                    this.elem = document.getElementById("bar");
+                    this.elem.style.width = this.width + "px";
+                    this.elem.style.height = this.height + "px";
+                    this.elem.style.background = this.color;
+                    this.elem.style.position = "absolute";
+                    this.elem.style.left = this.x + "px";
+                    this.elem.style.top = this.y + "px";
+                }
             }
-        }
-        let ball = {
-            radius: 20,
-            color: "red",
-            x: 0,
-            y: 0,
-            dx: 5,
-            dy: 5,
-            create: function () {
-                game.elem.innerHTML += '<div id="ball"></div>';
+        };
+        /* ----------- VIEW ending ------------ */
+
+
+
+        /* ----------- MODEL beginning -------- */
+        let model = {
+            scoren: 0,
+
+            gameOver: function() {
+                model.intervalManager(false, controller.ballMove, 40);
+                game.style.background = "red";
+                alert("GAME OVER !!!");
             },
-            show: function(){
-                this.width = 2 * this.radius,
-                this.height = 2 * this.radius,
-                this.elem = document.getElementById("ball");
-                this.elem.style.width = this.width + "px"
-                this.elem.style.height = this.height + "px"
-                this.elem.style.background = "radial-gradient(closest-side at 30% 30%, white, " + this.color + ")";
-                this.elem.style.borderRadius = this.width / 2 + "px";
-                this.elem.style.position = "absolute";
-                this.elem.style.left = this.x + "px";
-                this.elem.style.top = this.y + "px";
-            },
-            move: function () {
-                if(ball.x < 0 || ball.x >= game.width - ball.width) ball.dx *= -1;
-                if(ball.y < 0 || ball.y >= bar.y - ball.height && collision()) ball.dy *= -1;
-                if(ball.y >= game.height - ball.height) gameOver();
-                ball.x += ball.dx;
-                ball.y += ball.dy;
-                ball.show();
+
+            intervalID: null,
+            intervalManager: function(flag, animate, time) {
+                if(flag) intervalID =  setInterval(animate, time); 
+                else clearInterval(intervalID);
+                    
             }
-        }
-        let bar = {
-            width: 150,
-            height: 10,
-            color: "blue",
-            x: 0,
-            dx: 10,
-            create: function () {
-                game.elem.innerHTML += '<div id="bar"></div>';
+
+
+        };
+        /* ----------- MODEL ending ------------- */
+
+
+
+
+        /* ----------- CONTROLLER beginning ----- */
+        let controller = {
+            
+            collision: function() {
+                return (view.ball.x > view.bar.x - view.ball.radius && view.ball.x < view.bar.x + view.bar.width - view.ball.radius);
             },
-            show: function () {
-                this.y = game.height - this.height - 10;
-                this.elem = document.getElementById("bar");
-                this.elem.style.width = this.width + "px";
-                this.elem.style.height = this.height + "px";
-                this.elem.style.background = this.color;
-                this.elem.style.position = "absolute";
-                this.elem.style.left = this.x + "px";
-                this.elem.style.top = this.y + "px";
+
+            ballMove: function () {
+                if(view.ball.x < 0 || view.ball.x >= view.game.width - view.ball.width) view.ball.dx *= -1;
+                if(view.ball.y < 0 || view.ball.y >= view.bar.y - view.ball.height && controller.collision()) view.ball.dy *= -1;
+                if(view.ball.y >= view.game.height - view.ball.height) model.gameOver();
+                view.ball.x += view.ball.dx;
+                view.ball.y += view.ball.dy;
+
+                if(view.ball.y >= view.bar.y - view.ball.height && controller.collision()) {
+                    model.scoren++;
+                    score.innerHTML = "Score: " + model.scoren;
+
+                    view.ball.dx = view.ball.dx*1.2;
+                    view.ball.dy = view.ball.dy*1.2;
+
+                }                             
+                view.ball.show();
             },
-            move: function (code) {
-                if(code == 37 && bar.x > 0) bar.x -= bar.dx;
-                if(code == 39 && bar.x < game.width - bar.width) bar.x += bar.dx;
-                bar.show();
+
+            barMove: function (code) {
+                if(code == 37 && view.bar.x > 0) view.bar.x -= view.bar.dx;
+                if(code == 39 && view.bar.x < view.game.width - view.bar.width) view.bar.x += view.bar.dx;
+                view.bar.show();
             }
-        }
 
-        init();
-        game.show();
-        ball.create();
-        bar.create();
-        bar.show();
+        };
+        /* ----------- CONTROLLER ending -------- */
 
-        let start = setInterval(ball.move, 40);
 
-        document.onkeydown = function (e) { bar.move(e.keyCode) };
 
-        function collision() {
-            return (ball.x > bar.x - ball.radius && ball.x < bar.x + bar.width - ball.radius);
-        }
+        /* ------- anonymous initialize function B------- */
+        (function () {
+            
+            let start = {
+                init: function () {
+                    this.main();
+                    this.control();
+                    this.event();
+                },
 
-        function gameOver() {
-            clearInterval(start);
-            game.elem.style.background = "#000";
-            alert("GAME OVER !!!");
-        }
+                main: function () {
+                },
 
-        function init() {
-            let body = document.getElementsByTagName("body")[0];
-            body.style.height = "100vh";
-            body.style.margin = "0";
-            body.style = "flex";
-        }
+                control: function () {
+                    view.styleBody();
+                    view.ball.create();
+                    view.bar.create();
+                    view.scoreTxt.create();
+                    view.game.show();
+                    view.scoreTxt.show();
+                    view.bar.show();
+                },
+
+                event: function () {
+                    document.onkeydown = function (e) { controller.barMove(e.keyCode) };
+                    model.intervalManager(true, controller.ballMove, 40)
+                }
+            }
+
+            start.init()
+        }())
+        /* ------- anonymous initialize function E------- */
     </script>
 </body>
 </html>
