@@ -16,7 +16,7 @@
             setInterval(drawClock, 1000);
 
             function drawClock() {
-                drowFace();
+                drawFace();
                 drawNumbers();
                 drawTime();
             }
@@ -64,7 +64,7 @@
                 }
             }
 
-            function drowFace() {
+            function drawFace() {
                 let grad = clock.createRadialGradient(0, 0 , .95 * r, 0, 0, 1.05 * r);
                 grad.addColorStop(0, '#333');
                 grad.addColorStop(.5, '#fff');
