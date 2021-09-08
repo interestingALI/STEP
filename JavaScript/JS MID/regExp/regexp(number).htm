@@ -12,7 +12,6 @@
             let cleaned = ('' + num).replace(/\D/g, '');
             let match = cleaned.match(/^(994|00994|9940|009940|0)?(\d{2})(\d{3})(\d{2})(\d{2})$/);
             if (match) {
-                let deleted = (match[1] ? '' : '');
                 return ["(+994) ", match[2], ' ', match[3], ' ', match[4], ' ', match[5]].join('');
             }
             return null;
