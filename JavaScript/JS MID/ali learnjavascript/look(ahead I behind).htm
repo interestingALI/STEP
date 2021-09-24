@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1 //
+    let regexp_1 = /(?<!-|\d)\d+/g;
+    let str_1 = "0 12 -5 123 -18";
+    alert( str_1.match(regexp_1) );
+
+        // 2 //
+    let regexp_2 = /(?<=<body.*?>)/;
+    let str_2 = `
+    <html>
+    <body style="height: 200px">
+    ...
+    </body>
+    </html>
+    `;
+
+    str_2 = str_2.replace(regexp_2, `<h1>Hello</h1>`);
+    alert( str_2 );
+    </script>
+</body>
+</html>

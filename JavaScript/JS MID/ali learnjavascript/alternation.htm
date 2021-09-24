@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ALTERNATION</title>
+</head>
+<body>
+    <script>
+        // 1 //
+        let regexp_a = /Java(Script)?|PHP|C(\+\+)?/g;
+        alert("Java JavaScript PHP C++ C".match(regexp_a) );
+
+        // 2 //
+        let str = "..[url][b]http://ya.ru[/b][/url]..";    
+        let regexp_b = /\[(url|b|quote)\].*?\[\/\1\]/gs;    // Как сделать так что бы находило любой тег?
+        alert( str.match(regexp_b) );
+
+        // 3 //
+        let str_2 = ' .. "test me" .. "Скажи \\"Привет\\"!" .. "\\\\ \\"" .. ';
+        let regexp_c = /"(.*?[^\\])"/g;
+        alert( str_2.match(regexp_c) );
+
+        // 4 //
+        let regexp_d = /<style(\s.*?>|>)/g
+        alert( '<style> <styler> <style type="..." id="...">'.match(regexp_d) );
+    </script>
+</body>
+</html>
